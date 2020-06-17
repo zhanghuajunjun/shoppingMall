@@ -1,0 +1,323 @@
+{
+  "keys": "F:\\项目练习\\shoppingmall\\server\\config\\config.default.js",
+  "middleware": "F:\\项目练习\\shoppingmall\\server\\config\\config.default.js",
+  "cluster": {
+    "listen": {
+      "path": "F:\\项目练习\\shoppingmall\\server\\config\\config.default.js",
+      "port": "F:\\项目练习\\shoppingmall\\server\\config\\config.default.js",
+      "hostname": "F:\\项目练习\\shoppingmall\\server\\config\\config.default.js"
+    }
+  },
+  "view": {
+    "mapping": {
+      ".html": "F:\\项目练习\\shoppingmall\\server\\config\\config.default.js"
+    },
+    "root": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-view@2.1.2@egg-view\\config\\config.default.js",
+    "cache": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-view@2.1.2@egg-view\\config\\config.local.js",
+    "defaultExtension": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-view@2.1.2@egg-view\\config\\config.default.js",
+    "defaultViewEngine": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-view@2.1.2@egg-view\\config\\config.default.js"
+  },
+  "mongoose": {
+    "client": {
+      "url": "F:\\项目练习\\shoppingmall\\server\\config\\config.default.js",
+      "options": "F:\\项目练习\\shoppingmall\\server\\config\\config.default.js"
+    },
+    "open": "F:\\项目练习\\shoppingmall\\server\\config\\config.default.js",
+    "url": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-mongoose@3.2.0@egg-mongoose\\config\\config.default.js",
+    "options": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-mongoose@3.2.0@egg-mongoose\\config\\config.default.js",
+    "plugins": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-mongoose@3.2.0@egg-mongoose\\config\\config.default.js",
+    "loadModel": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-mongoose@3.2.0@egg-mongoose\\config\\config.default.js",
+    "app": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-mongoose@3.2.0@egg-mongoose\\config\\config.default.js",
+    "agent": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-mongoose@3.2.0@egg-mongoose\\config\\config.default.js"
+  },
+  "security": {
+    "csrf": "F:\\项目练习\\shoppingmall\\server\\config\\config.default.js",
+    "domainWhiteList": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js",
+    "protocolWhiteList": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js",
+    "defaultMiddleware": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js",
+    "xframe": {
+      "enable": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js",
+      "value": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js"
+    },
+    "hsts": {
+      "enable": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.local.js",
+      "maxAge": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js",
+      "includeSubdomains": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js"
+    },
+    "dta": {
+      "enable": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js"
+    },
+    "methodnoallow": {
+      "enable": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js"
+    },
+    "noopen": {
+      "enable": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js"
+    },
+    "nosniff": {
+      "enable": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js"
+    },
+    "referrerPolicy": {
+      "enable": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js",
+      "value": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js"
+    },
+    "xssProtection": {
+      "enable": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js",
+      "value": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js"
+    },
+    "csp": {
+      "enable": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js",
+      "policy": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js"
+    },
+    "ssrf": {
+      "ipBlackList": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js",
+      "checkAddress": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js"
+    }
+  },
+  "session": {
+    "key": "F:\\项目练习\\shoppingmall\\server\\config\\config.default.js",
+    "maxAge": "F:\\项目练习\\shoppingmall\\server\\config\\config.default.js",
+    "overwrite": "F:\\项目练习\\shoppingmall\\server\\config\\config.default.js",
+    "httpOnly": "F:\\项目练习\\shoppingmall\\server\\config\\config.default.js",
+    "signed": "F:\\项目练习\\shoppingmall\\server\\config\\config.default.js",
+    "rolling": "F:\\项目练习\\shoppingmall\\server\\config\\config.default.js",
+    "renew": "F:\\项目练习\\shoppingmall\\server\\config\\config.default.js",
+    "encrypt": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-session@3.2.0@egg-session\\config\\config.default.js"
+  },
+  "bodyParser": {
+    "jsonLimit": "F:\\项目练习\\shoppingmall\\server\\config\\config.default.js",
+    "enable": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+    "encoding": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+    "formLimit": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+    "textLimit": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+    "strict": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+    "queryString": {
+      "arrayLimit": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+      "depth": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+      "parameterLimit": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js"
+    },
+    "onerror": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js"
+  },
+  "jwt": {
+    "secret": "F:\\项目练习\\shoppingmall\\server\\config\\config.default.js",
+    "enable": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-jwt@3.1.7@egg-jwt\\config\\config.default.js"
+  },
+  "url": "F:\\项目练习\\shoppingmall\\server\\config\\config.default.js",
+  "uploadDir": "F:\\项目练习\\shoppingmall\\server\\config\\config.default.js",
+  "secret": "F:\\项目练习\\shoppingmall\\server\\config\\config.default.js",
+  "helper": {
+    "shtml": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js"
+  },
+  "jsonp": {
+    "limit": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-jsonp@2.0.0@egg-jsonp\\config\\config.default.js",
+    "callback": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-jsonp@2.0.0@egg-jsonp\\config\\config.default.js",
+    "csrf": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-jsonp@2.0.0@egg-jsonp\\config\\config.default.js"
+  },
+  "onerror": {
+    "errorPageUrl": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-onerror@2.1.0@egg-onerror\\config\\config.default.js",
+    "appErrorFilter": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-onerror@2.1.0@egg-onerror\\config\\config.default.js",
+    "templatePath": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-onerror@2.1.0@egg-onerror\\config\\config.default.js"
+  },
+  "i18n": {
+    "defaultLocale": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-i18n@2.1.1@egg-i18n\\config\\config.default.js",
+    "dirs": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-i18n@2.1.1@egg-i18n\\config\\config.default.js",
+    "queryField": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-i18n@2.1.1@egg-i18n\\config\\config.default.js",
+    "cookieField": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-i18n@2.1.1@egg-i18n\\config\\config.default.js",
+    "cookieDomain": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-i18n@2.1.1@egg-i18n\\config\\config.default.js",
+    "cookieMaxAge": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-i18n@2.1.1@egg-i18n\\config\\config.default.js"
+  },
+  "watcher": {
+    "type": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-watcher@3.1.1@egg-watcher\\config\\config.local.js",
+    "eventSources": {
+      "default": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-watcher@3.1.1@egg-watcher\\config\\config.default.js",
+      "development": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-watcher@3.1.1@egg-watcher\\config\\config.default.js"
+    }
+  },
+  "customLogger": {
+    "scheduleLogger": {
+      "consoleLevel": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-schedule@3.6.4@egg-schedule\\config\\config.default.js",
+      "file": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-schedule@3.6.4@egg-schedule\\config\\config.default.js"
+    }
+  },
+  "schedule": {
+    "directory": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-schedule@3.6.4@egg-schedule\\config\\config.default.js"
+  },
+  "multipart": {
+    "mode": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-multipart@2.10.3@egg-multipart\\config\\config.default.js",
+    "autoFields": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-multipart@2.10.3@egg-multipart\\config\\config.default.js",
+    "defaultCharset": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-multipart@2.10.3@egg-multipart\\config\\config.default.js",
+    "fieldNameSize": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-multipart@2.10.3@egg-multipart\\config\\config.default.js",
+    "fieldSize": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-multipart@2.10.3@egg-multipart\\config\\config.default.js",
+    "fields": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-multipart@2.10.3@egg-multipart\\config\\config.default.js",
+    "fileSize": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-multipart@2.10.3@egg-multipart\\config\\config.default.js",
+    "files": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-multipart@2.10.3@egg-multipart\\config\\config.default.js",
+    "fileExtensions": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-multipart@2.10.3@egg-multipart\\config\\config.default.js",
+    "whitelist": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-multipart@2.10.3@egg-multipart\\config\\config.default.js",
+    "tmpdir": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-multipart@2.10.3@egg-multipart\\config\\config.default.js",
+    "cleanSchedule": {
+      "cron": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-multipart@2.10.3@egg-multipart\\config\\config.default.js"
+    }
+  },
+  "development": {
+    "watchDirs": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-development@2.5.0@egg-development\\config\\config.default.js",
+    "ignoreDirs": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-development@2.5.0@egg-development\\config\\config.default.js",
+    "fastReady": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-development@2.5.0@egg-development\\config\\config.default.js",
+    "reloadOnDebug": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-development@2.5.0@egg-development\\config\\config.default.js",
+    "overrideDefault": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-development@2.5.0@egg-development\\config\\config.default.js"
+  },
+  "logrotator": {
+    "filesRotateByHour": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-logrotator@3.1.0@egg-logrotator\\config\\config.default.js",
+    "hourDelimiter": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-logrotator@3.1.0@egg-logrotator\\config\\config.default.js",
+    "filesRotateBySize": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-logrotator@3.1.0@egg-logrotator\\config\\config.default.js",
+    "maxFileSize": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-logrotator@3.1.0@egg-logrotator\\config\\config.default.js",
+    "maxFiles": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-logrotator@3.1.0@egg-logrotator\\config\\config.default.js",
+    "rotateDuration": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-logrotator@3.1.0@egg-logrotator\\config\\config.default.js",
+    "maxDays": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-logrotator@3.1.0@egg-logrotator\\config\\config.default.js"
+  },
+  "static": {
+    "prefix": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-static@2.2.0@egg-static\\config\\config.default.js",
+    "dir": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-static@2.2.0@egg-static\\config\\config.default.js",
+    "dynamic": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-static@2.2.0@egg-static\\config\\config.default.js",
+    "preload": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-static@2.2.0@egg-static\\config\\config.default.js",
+    "buffer": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-static@2.2.0@egg-static\\config\\config.default.js",
+    "maxFiles": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-static@2.2.0@egg-static\\config\\config.default.js"
+  },
+  "ejs": {
+    "root": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-view-ejs@2.0.1@egg-view-ejs\\config\\config.default.js",
+    "cache": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-view-ejs@2.0.1@egg-view-ejs\\config\\config.local.js",
+    "debug": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-view-ejs@2.0.1@egg-view-ejs\\config\\config.default.js",
+    "compileDebug": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-view-ejs@2.0.1@egg-view-ejs\\config\\config.default.js",
+    "delimiter": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-view-ejs@2.0.1@egg-view-ejs\\config\\config.default.js",
+    "strict": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg-view-ejs@2.0.1@egg-view-ejs\\config\\config.default.js"
+  },
+  "env": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+  "name": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+  "cookies": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+  "proxy": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+  "maxIpsCount": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+  "maxProxyCount": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+  "protocolHeaders": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+  "ipHeaders": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+  "hostHeaders": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+  "pkg": {
+    "name": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+    "version": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+    "description": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+    "private": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+    "dependencies": {
+      "egg": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+      "egg-cors": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+      "egg-jwt": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+      "egg-mongoose": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+      "egg-scripts": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+      "egg-view-ejs": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+      "md5": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+      "mz-modules": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+      "request": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+      "silly-datetime": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+      "svg-captcha": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js"
+    },
+    "devDependencies": {
+      "autod": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+      "autod-egg": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+      "egg-bin": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+      "egg-ci": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+      "egg-mock": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+      "eslint": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+      "eslint-config-egg": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+      "webstorm-disable-index": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js"
+    },
+    "engines": {
+      "node": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js"
+    },
+    "scripts": {
+      "start": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+      "stop": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+      "dev": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+      "debug": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+      "test": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+      "test-local": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+      "cov": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+      "lint": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+      "ci": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+      "autod": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js"
+    },
+    "ci": {
+      "version": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js"
+    },
+    "repository": {
+      "type": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+      "url": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js"
+    },
+    "author": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+    "license": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js"
+  },
+  "baseDir": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+  "HOME": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+  "rundir": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+  "dump": {
+    "ignore": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js"
+  },
+  "confusedConfigurations": {
+    "bodyparser": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+    "notFound": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+    "sitefile": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+    "middlewares": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+    "httpClient": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js"
+  },
+  "notfound": {
+    "pageUrl": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js"
+  },
+  "siteFile": {
+    "/favicon.ico": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js"
+  },
+  "logger": {
+    "dir": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+    "encoding": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+    "env": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+    "level": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+    "consoleLevel": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+    "disableConsoleAfterReady": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+    "outputJSON": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+    "buffer": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+    "appLogName": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+    "coreLogName": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+    "agentLogName": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+    "errorLogName": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+    "coreLogger": {
+      "consoleLevel": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.local.js"
+    },
+    "allowDebugAtProd": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js"
+  },
+  "httpclient": {
+    "enableDNSCache": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+    "dnsCacheLookupInterval": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+    "dnsCacheMaxLength": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+    "request": {
+      "timeout": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js"
+    },
+    "httpAgent": {
+      "keepAlive": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+      "freeSocketTimeout": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+      "maxSockets": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+      "maxFreeSockets": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js"
+    },
+    "httpsAgent": {
+      "keepAlive": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+      "freeSocketTimeout": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+      "maxSockets": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+      "maxFreeSockets": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js"
+    }
+  },
+  "meta": {
+    "enable": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+    "logging": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js"
+  },
+  "coreMiddleware": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+  "workerStartTimeout": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+  "serverTimeout": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+  "clusterClient": {
+    "maxWaitTime": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js",
+    "responseTimeout": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js"
+  },
+  "onClientError": "F:\\项目练习\\shoppingmall\\server\\node_modules\\_egg@2.26.1@egg\\config\\config.default.js"
+}
