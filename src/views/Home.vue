@@ -13,6 +13,9 @@
     <div>
       <Recommend></Recommend>
     </div>
+    <div>
+      <floor></floor>
+    </div>
   </div>
 </template>
 
@@ -21,6 +24,7 @@ import Tops from "../components/home/Tops";
 import Rotation from "../components/home/Rotation";
 import Category from "../components/home/Category";
 import Recommend from "../components/home/Recommend";
+import Floor from "../components/home/Floor";
 export default {
   name: "",
   props: {},
@@ -34,7 +38,7 @@ export default {
     Rotation,
     Category,
     Recommend,
-
+    Floor,
   },
   methods: {},
   mounted() {
@@ -45,6 +49,7 @@ export default {
         this.$store.commit("setCategory", res.data.category);
         this.obj = res.data.advertesPicture
         this.$store.commit("setRecommend", res.data.recommend);
+        this.$store.commit("setFloor1", res.data.floor1);
         console.log(res);
       })
       .catch(err => {});
@@ -59,7 +64,10 @@ export default {
     },
     recommend() {
       return this.$store.state.recommend;
-    }
+    },
+    floor1() {
+      return this.$store.state.floor1;
+    },
   }
 };
 </script>

@@ -8,6 +8,7 @@ export default new Vuex.Store({
     slides: [],
     category: [],
     recommend: [],
+    floor1: [],
 
   },
   mutations: {
@@ -20,6 +21,9 @@ export default new Vuex.Store({
     setRecommend(state,data) {
       state.recommend = data
     },
+    setFloor1(state,data) {
+      state.floor1 = data
+    }
   },
   actions: {
   },
