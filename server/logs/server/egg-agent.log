@@ -507,3 +507,13 @@ hostname: Trayvon
 2020-06-17 19:36:43,923 INFO 7028 [egg-watcher] Start watching: "F:\\项目练习\\shoppingmall\\server\\app.js"
 2020-06-17 19:36:43,923 INFO 7028 [egg-watcher:agent] watcher start success
 2020-06-17 19:36:43,944 INFO 7028 [egg:core] dump config after ready, 10ms
+2020-06-18 13:27:26,910 INFO 9300 [egg:logger] init all loggers with options: {"dir":"F:\\项目练习\\shoppingmall\\server\\logs\\server","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"server-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"agent"}
+2020-06-18 13:27:26,922 INFO 9300 [egg:core] dump config after load, 6ms
+2020-06-18 13:27:27,138 INFO 9300 [egg-watcher] Start watching: ["F:\\项目练习\\shoppingmall\\server\\app","F:\\项目练习\\shoppingmall\\server\\config","F:\\项目练习\\shoppingmall\\server\\mocks","F:\\项目练习\\shoppingmall\\server\\mocks_proxy","F:\\项目练习\\shoppingmall\\server\\app.js"]
+2020-06-18 13:27:27,139 INFO 9300 [egg-watcher] Start watching: "F:\\项目练习\\shoppingmall\\server\\app"
+2020-06-18 13:27:27,139 INFO 9300 [egg-watcher] Start watching: "F:\\项目练习\\shoppingmall\\server\\config"
+2020-06-18 13:27:27,139 INFO 9300 [egg-watcher] Start watching: "F:\\项目练习\\shoppingmall\\server\\mocks"
+2020-06-18 13:27:27,140 INFO 9300 [egg-watcher] Start watching: "F:\\项目练习\\shoppingmall\\server\\mocks_proxy"
+2020-06-18 13:27:27,140 INFO 9300 [egg-watcher] Start watching: "F:\\项目练习\\shoppingmall\\server\\app.js"
+2020-06-18 13:27:27,140 INFO 9300 [egg-watcher:agent] watcher start success
+2020-06-18 13:27:27,171 INFO 9300 [egg:core] dump config after ready, 19ms

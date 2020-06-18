@@ -1,7 +1,6 @@
 // 用来封装请求
 import service from './index'
-import { ssrCompile } from 'vue-template-compiler'
-import { set } from 'core-js/fn/dict'
+
 
 export default {
 
@@ -95,12 +94,12 @@ export default {
 
   // 13、退出登录  post
   loginOut() {
-    return service.post(`/loginOut`)
+    return service.post(`/loginOut`,{})
   },
 
   // 14、获取用户信息 post
   queryUser() {
-    return service.post(`/queryUser`)
+    return service.post(`/queryUser`,{})
   },
 
   // 15、修改保存用户信息  post
@@ -147,7 +146,7 @@ export default {
 
   // 18、获取登录注册默认验证码  get
   verify() {
-    return service.get(`/v1/verify`)
+    return service.get(`/verify`)
   },
 
   // 19、查询用户收货地址  get

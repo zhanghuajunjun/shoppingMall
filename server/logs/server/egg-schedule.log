@@ -190,3 +190,9 @@
 2020-06-17 19:36:48,178 INFO 7028 [Timer] F:\项目练习\shoppingmall\server\node_modules\_egg-multipart@2.10.3@egg-multipart\app\schedule\clean_tmpdir.js next time will execute after 31991824ms at 2020-06-18 04:30:00.002
 2020-06-17 19:36:48,179 INFO 7028 [Timer] F:\项目练习\shoppingmall\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\clean_log.js next time will execute after 15791821ms at 2020-06-18 00:00:00.000
 2020-06-17 19:36:48,179 INFO 7028 [Timer] F:\项目练习\shoppingmall\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\rotate_by_file.js next time will execute after 15792821ms at 2020-06-18 00:00:01.000
+2020-06-18 13:27:31,085 INFO 4476 [egg-schedule]: register schedule F:\项目练习\shoppingmall\server\node_modules\_egg-multipart@2.10.3@egg-multipart\app\schedule\clean_tmpdir.js
+2020-06-18 13:27:31,085 INFO 4476 [egg-schedule]: register schedule F:\项目练习\shoppingmall\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\clean_log.js
+2020-06-18 13:27:31,085 INFO 4476 [egg-schedule]: register schedule F:\项目练习\shoppingmall\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\rotate_by_file.js
+2020-06-18 13:27:40,772 INFO 9300 [Timer] F:\项目练习\shoppingmall\server\node_modules\_egg-multipart@2.10.3@egg-multipart\app\schedule\clean_tmpdir.js next time will execute after 54139259ms at 2020-06-19 04:30:00.031
+2020-06-18 13:27:40,773 INFO 9300 [Timer] F:\项目练习\shoppingmall\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\clean_log.js next time will execute after 37939227ms at 2020-06-19 00:00:00.000
+2020-06-18 13:27:40,774 INFO 9300 [Timer] F:\项目练习\shoppingmall\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\rotate_by_file.js next time will execute after 37940227ms at 2020-06-19 00:00:01.001
