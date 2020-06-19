@@ -2,7 +2,7 @@
   <div class="top">
     <div class="local">
       <div>{{city}}成都市</div>
-      <i class="el-icon-caret-bottom" @click="city"></i>
+      <i class="el-icon-caret-bottom" @click="cityli"></i>
     </div>
     <div class="search">
       <van-search
@@ -34,6 +34,9 @@ export default {
   methods: {
     onSearch(val) {
       Toast("val");
+    },
+    cityli() {
+      this.$router.push('/city')
     }
   },
   mounted() {
@@ -81,9 +84,9 @@ export default {
 }
 .top {
   display: flex;
+  background: #f2f2f2;
 }
 .backg {
-  border-radius: 20px;
   background: #f2f2f2;
 }
 .el-icon-caret-bottom {

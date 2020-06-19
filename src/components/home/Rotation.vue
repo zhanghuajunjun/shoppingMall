@@ -11,7 +11,12 @@
 <script>
 export default {
   name: "",
-  props: {},
+  props: {
+     slides: {
+       type: Array,
+       default: ()=>[]
+     }
+  },
   data() {
     return {};
   },
@@ -19,11 +24,7 @@ export default {
   methods: {},
   mounted() {},
   watch: {},
-  computed: {
-    slides() {
-      return this.$store.state.slides
-    }
-  }
+  computed: {}
 };
 </script>
 

@@ -23,6 +23,30 @@ Vue.use(VueRouter)
           title: '首页'
         }
       },
+      {
+        path: 'category',
+        name: 'Category',
+        component: () => import('../views/Category'),
+        meta: {
+          title: '分类'
+        }
+      },
+      {
+        path: 'shoppingCart',
+        name: 'ShoppingCart',
+        component: () => import('../views/ShoppingCart'),
+        meta: {
+          title: '购物车'
+        }
+      },
+      {
+        path: 'self',
+        name: 'Self',
+        component: () => import('../views/Self'),
+        meta: {
+          title: '我的'
+        }
+      },
     ]
   },
   {
@@ -30,7 +54,11 @@ Vue.use(VueRouter)
     name: 'Login',
     component: () => import('../views/Login.vue')
   },
-
+  {
+    path: '/city',
+    name: 'City',
+    component: () => import('../views/City.vue')
+  },
 
 
 

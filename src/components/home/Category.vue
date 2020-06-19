@@ -12,7 +12,12 @@
 <script>
 export default {
   name: "",
-  props: {},
+  props: {
+    category: {
+      type: Array,
+      default: ()=>[]
+    }
+  },
   data() {
     return {};
   },
@@ -20,11 +25,7 @@ export default {
   methods: {},
   mounted() {},
   watch: {},
-  computed: {
-    category() {
-      return this.$store.state.category;
-    }
-  }
+  computed: {}
 };
 </script>
 

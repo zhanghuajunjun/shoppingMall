@@ -15,7 +15,19 @@ import { Swipe, SwipeItem } from 'vant';
 import { Lazyload } from 'vant';
 import { Icon } from 'vant';
 import { Field } from 'vant';
+import { Grid, GridItem } from 'vant';
+import { Tabbar, TabbarItem } from 'vant';
+import { PullRefresh } from 'vant';
 
+
+Vue.use(PullRefresh);
+
+
+
+Vue.use(Tabbar);
+Vue.use(TabbarItem);
+Vue.use(Grid);
+Vue.use(GridItem);
 Vue.use(Field);
 Vue.use(Icon);
 Vue.use(Lazyload);

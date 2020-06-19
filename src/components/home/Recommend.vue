@@ -27,7 +27,12 @@
 <script>
 export default {
   name: "",
-  props: {},
+  props: {
+    recommend: {
+      type: Array,
+      default: () => []
+    }
+  },
   data() {
     return {};
   },
@@ -36,11 +41,7 @@ export default {
   methods: {},
   mounted() {},
   watch: {},
-  computed: {
-    recommend() {
-      return this.$store.state.recommend;
-    }
-  }
+  computed: {}
 };
 </script>
 
@@ -84,7 +85,7 @@ img {
 }
 .xiangq {
   font-weight: 600px;
-  color:#ffffff;
+  color: #ffffff;
   background: #ff4c38;
   padding: 5px;
   border-radius: 0 5px 5px 0;

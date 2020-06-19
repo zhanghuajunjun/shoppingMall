@@ -31,7 +31,7 @@
         <van-field v-model="sms" center clearable label="短信验证码" placeholder="仅注册需要" class="field">
           <template #button>
             <div>
-              <button type="primary" class="btn" @click="SMS">{{time}}</button>
+              <button class="btn" @click="SMS">{{time}}</button>
             </div>
           </template>
         </van-field>
