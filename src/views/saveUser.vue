@@ -7,7 +7,7 @@
     <van-field v-model="userInfos.nickname"  label="昵称" />
     <van-field v-model="userInfos.gender"  label="男" />
     <van-field v-model="email" type="email" label="邮箱" placeholder="请输入邮箱"/>
-    <van-field v-model="day"  label="出生年月" />
+    <van-field v-model="borth"  label="出生年月" />
   </div>
 </template>
 
@@ -19,7 +19,7 @@ export default {
     return {
       head: '',
       email: '',
-      // borth: ''
+      borth: ''
     };
   },
   components: {},
@@ -29,11 +29,21 @@ export default {
     }
   },
   mounted() {
+    this.borth = `${this.year}年${this.month}月${this.day}日`
   },
   watch: {},
   computed: {
     userInfos() {
       return this.$store.state.userInfos;
+    },
+    year() {
+      return this.$store.state.year;
+    },
+    month() {
+      return this.$store.state.month;
+    },
+    day() {
+      return this.$store.state.day;
     },
   }
 };

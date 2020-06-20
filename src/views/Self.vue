@@ -70,6 +70,9 @@ export default {
       .then(res => {
         this.userInfo = res.userInfo;
         this.$store.commit('setUserInfos',res.userInfo)
+        this.$store.commit('setYear',res.userInfo.year)
+        this.$store.commit('setMonth',res.userInfo.month)
+        this.$store.commit('setDay',res.userInfo.day)
         console.log(res);
       })
       .catch(err => {});
@@ -79,6 +82,15 @@ export default {
     userInfos() {
       return this.$store.state.userInfos;
     },
+    year() {
+      return this.$store.state.year;
+    },
+    month() {
+      return this.$store.state.month;
+    },
+    day() {
+      return this.$store.state.day;
+    }
   }
 };
 </script>
