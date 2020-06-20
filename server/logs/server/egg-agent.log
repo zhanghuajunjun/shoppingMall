@@ -9,3 +9,13 @@
 2020-06-19 08:38:08,309 INFO 9940 [egg-watcher] Start watching: "F:\\项目练习\\shoppingmall\\server\\app.js"
 2020-06-19 08:38:08,309 INFO 9940 [egg-watcher:agent] watcher start success
 2020-06-19 08:38:08,328 INFO 9940 [egg:core] dump config after ready, 8ms
+2020-06-20 10:44:09,474 INFO 12164 [egg:logger] init all loggers with options: {"dir":"F:\\项目练习\\shoppingmall\\server\\logs\\server","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"server-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"agent"}
+2020-06-20 10:44:09,485 INFO 12164 [egg:core] dump config after load, 7ms
+2020-06-20 10:44:09,831 INFO 12164 [egg-watcher] Start watching: ["F:\\项目练习\\shoppingmall\\server\\app","F:\\项目练习\\shoppingmall\\server\\config","F:\\项目练习\\shoppingmall\\server\\mocks","F:\\项目练习\\shoppingmall\\server\\mocks_proxy","F:\\项目练习\\shoppingmall\\server\\app.js"]
+2020-06-20 10:44:09,831 INFO 12164 [egg-watcher] Start watching: "F:\\项目练习\\shoppingmall\\server\\app"
+2020-06-20 10:44:09,832 INFO 12164 [egg-watcher] Start watching: "F:\\项目练习\\shoppingmall\\server\\config"
+2020-06-20 10:44:09,832 INFO 12164 [egg-watcher] Start watching: "F:\\项目练习\\shoppingmall\\server\\mocks"
+2020-06-20 10:44:09,832 INFO 12164 [egg-watcher] Start watching: "F:\\项目练习\\shoppingmall\\server\\mocks_proxy"
+2020-06-20 10:44:09,833 INFO 12164 [egg-watcher] Start watching: "F:\\项目练习\\shoppingmall\\server\\app.js"
+2020-06-20 10:44:09,833 INFO 12164 [egg-watcher:agent] watcher start success
+2020-06-20 10:44:09,854 INFO 12164 [egg:core] dump config after ready, 10ms
