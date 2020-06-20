@@ -5,9 +5,7 @@ import store from './store'
 import Vant from 'vant';
 import 'vant/lib/index.css';
 import api from './components/http/api'
-// 后面调用请求时 ：this.$api.方法名().then().catch()
 import dayjs from 'dayjs'
-// 后面调用请求时 ：this.$dayjs
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import { Search } from 'vant';
@@ -18,12 +16,19 @@ import { Field } from 'vant';
 import { Grid, GridItem } from 'vant';
 import { Tabbar, TabbarItem } from 'vant';
 import { PullRefresh } from 'vant';
+import { Sidebar, SidebarItem } from 'vant';
+import { Tab, Tabs } from 'vant';
+import { IndexBar, IndexAnchor } from 'vant';
 
 
+
+Vue.use(IndexBar);
+Vue.use(IndexAnchor);
+Vue.use(Tab);
+Vue.use(Tabs);
+Vue.use(Sidebar);
+Vue.use(SidebarItem);
 Vue.use(PullRefresh);
-
-
-
 Vue.use(Tabbar);
 Vue.use(TabbarItem);
 Vue.use(Grid);

@@ -1,10 +1,10 @@
 <template>
   <div class="dv">
+    <div class="tops">
+      <tops></tops>
+    </div>
+    <div class="zhanwei"></div>
     <van-pull-refresh v-model="isLoading" success-text="刷新成功" @refresh="onRefresh">
-      <div class="tops">
-        <tops></tops>
-      </div>
-      <div class="zhanwei"></div>
       <div>
         <Rotation :slides="slides"></Rotation>
       </div>
@@ -88,12 +88,18 @@ export default {
         this.floor2 = res.data.floor2;
         this.floor3 = res.data.floor3;
         this.hostGoods = res.data.hotGoods;
+        this.$store.commit("setCategorys", res.data.category);
+
         console.log(res);
       })
       .catch(err => {});
   },
   watch: {},
-  computed: {}
+  computed: {
+    categorys() {
+      return this.$store.state.categorys;
+    }
+  }
 };
 </script>
 

@@ -24,9 +24,9 @@ Vue.use(VueRouter)
         }
       },
       {
-        path: 'category',
-        name: 'Category',
-        component: () => import('../views/Category'),
+        path: 'categorys',
+        name: 'Categorys',
+        component: () => import('../views/Categorys'),
         meta: {
           title: '分类'
         }
@@ -59,7 +59,11 @@ Vue.use(VueRouter)
     name: 'City',
     component: () => import('../views/City.vue')
   },
-
+  {
+    path: '/saveUser',
+    name: 'SaveUser',
+    component: () => import('../views/saveUser.vue')
+  },
 
 
   {
