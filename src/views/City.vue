@@ -14,7 +14,7 @@
     <div class="text">热门城市</div>
     <div class="Text">
       <div class="Text1">
-        <div class="grid" v-for="(item,index) in arr" :key="index">{{item}}</div>
+        <div class="grid" v-for="(item,index) in arr" :key="index">{{item.name}}</div>
       </div>
     </div>
     <div class="foot">
@@ -37,7 +37,7 @@ export default {
   data() {
     return {
       value: "",
-      arr: ["北京", "上海", "杭州", "重庆", "成都", "厦门"],
+      arr: [],
       city: city,
       msg: [],
       datas: []
@@ -50,6 +50,7 @@ export default {
   },
   mounted() {
     this.datas = this.city.data.cities;
+    this.arr = this.city.data.hotCities;
     let keys = Object.keys(this.city.data.cities);
     this.msg = keys;
   },

@@ -2,12 +2,13 @@
   <div>
     <div class="vip">会员中心</div>
     <div class="info">
-      <van-icon name="setting" class="setting" color="#ffffff" size="25" @click="save"/>
+      <van-icon name="setting" class="setting" color="#ffffff" size="25" @click="save" />
       <div class="avatar">
         <img :src="userInfo.avatar" />
       </div>
-      <div class="wel">欢迎您：{{userInfo.nickname}}</div>
-      <div class="out">退出登录</div>
+      <div class="wel" v-if="flag">欢迎您：{{userInfo.nickname}}</div>
+      <div class="out" @click="out" v-if="flag">退出登录</div>
+      <div class="out" @click="login" v-else-if="flag==false">登录/注册</div>
     </div>
     <div class="flex-j-sa">
       <div class="f-dir-mid">
@@ -30,21 +31,10 @@
         <van-icon name="like-o" size="30" class="icon" badge="99+" />
         <div>已完成</div>
       </div>
-    </div><van-cell
-    title="全部订单"
-    is-link
-    to="index"
-    class="order"
-    icon="records"
-    />
-    <van-cell
-    title="收藏商品"
-    is-link
-    to="index"
-    icon="star-o"
-    class="cell"
-    />
-    <van-cell title="地址管理" is-link to="index" icon="location-o" />
+    </div>
+    <van-cell title="全部订单" is-link to="index" class="order" icon="records" />
+    <van-cell title="收藏商品" is-link to="index" icon="star-o" class="cell" />
+    <van-cell title="地址管理" is-link to="address" icon="location-o" />
     <van-cell title="最近浏览" is-link to="index" icon="eye-o" class="cell" />
   </div>
 </template>
@@ -55,13 +45,31 @@ export default {
   props: {},
   data() {
     return {
-      userInfo: {}
+      userInfo: {},
+      flag: "true",
     };
   },
   components: {},
   methods: {
     save() {
-      this.$router.push('/saveUser')
+      this.$router.push("/saveUser");
+    },
+    out() {
+      this.$dialog
+        .confirm({
+          title: "提示",
+          message: "您正在退出登录，请确认是否退出"
+        })
+        .then(() => {
+          this.flag = false;
+
+        })
+          // on cancel
+        .catch(() => {
+        });
+    },
+    login() {
+      this.$router.push("/login");
     }
   },
   mounted() {
@@ -69,10 +77,7 @@ export default {
       .queryUser()
       .then(res => {
         this.userInfo = res.userInfo;
-        this.$store.commit('setUserInfos',res.userInfo)
-        this.$store.commit('setYear',res.userInfo.year)
-        this.$store.commit('setMonth',res.userInfo.month)
-        this.$store.commit('setDay',res.userInfo.day)
+        this.$store.commit("setUserInfos", res.userInfo);
         console.log(res);
       })
       .catch(err => {});
@@ -81,15 +86,6 @@ export default {
   computed: {
     userInfos() {
       return this.$store.state.userInfos;
-    },
-    year() {
-      return this.$store.state.year;
-    },
-    month() {
-      return this.$store.state.month;
-    },
-    day() {
-      return this.$store.state.day;
     }
   }
 };

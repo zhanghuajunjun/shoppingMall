@@ -103,7 +103,7 @@ export default {
   },
 
   // 15、修改保存用户信息  post
-  saveUser({ gender, year, month, day, id, nickname }) {
+  saveUser({ gender, year, month, day, id, nickname, email }) {
     return service.post(`/saveUser`, {
       // 性别
       gender,
@@ -116,7 +116,8 @@ export default {
       // 用户id
       id,
       // 昵称
-      nickname
+      nickname,
+      email
     })
   },
 

@@ -18,7 +18,10 @@ import { Tabbar, TabbarItem } from 'vant';
 import { PullRefresh } from 'vant';
 import { Sidebar, SidebarItem } from 'vant';
 import { Tab, Tabs } from 'vant';
-import { IndexBar, IndexAnchor } from 'vant';
+import { IndexBar, IndexAnchor } from 'vant';import { Dialog } from 'vant';
+
+
+Vue.use(Dialog);
 
 
 

@@ -5,7 +5,7 @@ import Layout from '../views/Layout.vue'
 
 Vue.use(VueRouter)
 
-  const routes = [
+const routes = [
   {
     path: '/home',
     redirect: '/'
@@ -19,33 +19,21 @@ Vue.use(VueRouter)
         path: '',
         name: 'Home',
         component: Home,
-        meta: {
-          title: '首页'
-        }
       },
       {
         path: 'categorys',
         name: 'Categorys',
         component: () => import('../views/Categorys'),
-        meta: {
-          title: '分类'
-        }
       },
       {
         path: 'shoppingCart',
         name: 'ShoppingCart',
         component: () => import('../views/ShoppingCart'),
-        meta: {
-          title: '购物车'
-        }
       },
       {
         path: 'self',
         name: 'Self',
         component: () => import('../views/Self'),
-        meta: {
-          title: '我的'
-        }
       },
     ]
   },
@@ -64,8 +52,16 @@ Vue.use(VueRouter)
     name: 'SaveUser',
     component: () => import('../views/saveUser.vue')
   },
-
-
+  {
+    path: '/address',
+    name: 'Address',
+    component: () => import('../views/Address.vue')
+  },
+  {
+    path: '/addaddress',
+    name: 'AddAddress',
+    component: () => import('../views/AddAddress.vue')
+  },
   {
     path: '/about',
     name: 'About',
