@@ -5,29 +5,34 @@
     </div>
     <div class="zhanwei"></div>
     <van-pull-refresh v-model="isLoading" success-text="刷新成功" @refresh="onRefresh">
-      <div>
-        <Rotation :slides="slides"></Rotation>
-      </div>
-      <div class="category">
-        <Category :category="category"></Category>
-      </div>
-      <img :src="obj.PICTURE_ADDRESS" />
-      <div>
-        <Recommend :recommend="recommend"></Recommend>
-      </div>
-      <div>
-        <floor-one :floor1="floor1" :floorName="floorName.floor1" v-if="floorName"></floor-one>
-      </div>
-      <div>
-        <floor-two :floor2="floor2" :floorName="floorName.floor2" v-if="floorName"></floor-two>
-      </div>
-      <div>
-        <floor-three :floor3="floor3" :floorName="floorName.floor3" v-if="floorName"></floor-three>
-      </div>
-      <div>
-        <host-goods :hostGoods="hostGoods"></host-goods>
+      <div class="content" ref="contents">
+        <div class="item">
+          <div>
+            <Rotation :slides="slides"></Rotation>
+          </div>
+          <div class="category">
+            <Category :category="category"></Category>
+          </div>
+          <img :src="obj.PICTURE_ADDRESS" />
+          <div>
+            <Recommend :recommend="recommend"></Recommend>
+          </div>
+          <div>
+            <floor-one :floor1="floor1" :floorName="floorName.floor1" v-if="floorName"></floor-one>
+          </div>
+          <div>
+            <floor-two :floor2="floor2" :floorName="floorName.floor2" v-if="floorName"></floor-two>
+          </div>
+          <div>
+            <floor-three :floor3="floor3" :floorName="floorName.floor3" v-if="floorName"></floor-three>
+          </div>
+          <div>
+            <host-goods :hostGoods="hostGoods"></host-goods>
+          </div>
+        </div>
       </div>
     </van-pull-refresh>
+    <div class="zhanwei1"></div>
   </div>
 </template>
 
@@ -40,6 +45,8 @@ import FloorOne from "../components/home/FloorOne";
 import FloorTwo from "../components/home/FloorTwo";
 import FloorThree from "../components/home/FloorThree";
 import HostGoods from "../components/home/HostGoods";
+import BScroll from "better-scroll";
+
 export default {
   name: "",
   props: {},
@@ -93,6 +100,10 @@ export default {
         console.log(res);
       })
       .catch(err => {});
+    new BScroll(this.$refs.contents, {
+      scrollY: true,
+      click: true
+    });
   },
   watch: {},
   computed: {
@@ -114,11 +125,21 @@ export default {
 .dv {
   background: #f2f2f2;
 }
+.content {
+  // height: 4137px;
+  background: #f2f2f2;
+}
+.item {
+  background: #f2f2f2;
+}
 .category {
   padding: 15px 10px;
 }
 img {
   width: 100%;
   margin-bottom: 20px;
+}
+.zhanwei1 {
+  height: 50px;
 }
 </style>

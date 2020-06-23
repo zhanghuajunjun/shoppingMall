@@ -25,34 +25,17 @@ export default {
   data() {
     return {
       list: [],
-      chosenAddressId: "1"
-      // list: [
-      //   {
-      //     id: '1',
-      //     name: '张三',
-      //     tel: '13000000000',
-      //     address: '浙江省杭州市西湖区文三路 138 号东方通信大厦 7 楼 501 室',
-      //     isDefault: true,
-      //   },
-      //   {
-      //     id: '2',
-      //     name: '李四',
-      //     tel: '1310000000',
-      //     address: '浙江省杭州市拱墅区莫干山路 50 号',
-      //   },
-      // ],
+      chosenAddressId: "",
+      obj: {}
     };
   },
   components: {},
   methods: {
     onClickLeft() {
-      this.$router.push("/self");
+      this.$router.go(-1);
     },
-    onAdd() {
-      Toast("新增地址");
-    },
-    onEdit(item, index) {
-      Toast("编辑地址:" + index);
+    onEdit(item) {
+      this.$router.push({name:'EidtAddress',query:{obj: JSON.stringify(item)}})
     },
     onAdd() {
       this.$router.push("/addaddress");
@@ -62,6 +45,9 @@ export default {
     this.$api
       .getAddress()
       .then(res => {
+        res.address.map((item, index) => {
+          this.$set(item,'id',(index+1).toString())
+        })
         this.list = res.address;
         console.log(res);
       })

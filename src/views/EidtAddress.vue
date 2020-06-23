@@ -5,6 +5,7 @@
       :area-list="area"
       show-delete
       show-set-default
+      :address-info="addressInfo"
       :area-columns-placeholder="['请选择', '请选择', '请选择']"
       @save="onSave"
       @delete="onDelete"
@@ -19,7 +20,8 @@ export default {
   props: {},
   data() {
     return {
-      area: area
+      area: area,
+      addressInfo: {}
     };
   },
   components: {},
@@ -48,16 +50,17 @@ export default {
     },
     onDelete(id) {
       this.$api
-        .deleteAddress( id )
+        .deleteAddress({ id })
         .then(res => {
-          this.$toast("删除成功");
+          this.$toast('删除成功');
           this.$router.push("/address");
-          console.log(res);
         })
         .catch(err => {});
     }
   },
-  mounted() {},
+  mounted() {
+    this.addressInfo = JSON.parse(this.$route.query.obj);
+  },
   watch: {},
   computed: {}
 };

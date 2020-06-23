@@ -65,7 +65,7 @@ export default {
   // 8、单个商品详情  get
   goods(id) {
     // id:商品的id
-    return service.get(`/goods/one?id=${id}?id=${id}`)
+    return service.get(`/goods/one?id=${id}`)
   },
 
   // 9、收藏单个商品  post
@@ -167,7 +167,7 @@ export default {
   },
 
   // 22、增加收货地址  post
-  address({ name, tel, address, isDefault, province, city, county, addressDetail, areaCode, id }) {
+  address({ name, tel, address, isDefault, province, city, county, addressDetail, areaCode}) {
     return service.post(`/address`, {
       // 用户名
       name,
@@ -187,8 +187,6 @@ export default {
       addressDetail,
       // 地区代码
       areaCode,
-      // 修改地址时要传id
-      id
     })
   },
 

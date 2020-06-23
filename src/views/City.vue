@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     onClickLeft() {
-      this.$router.push("/");
+      this.$router.go(-1);
     }
   },
   mounted() {

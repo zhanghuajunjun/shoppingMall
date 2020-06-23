@@ -1,26 +1,28 @@
 <template>
-  <div class="recommend">
-    <div class="commodity">商品推荐</div>
-    <van-swipe :width="125" :loop="false" :show-indicators="false">
-      <van-swipe-item v-for="(item,index) in recommend" :key="index">
-        <div class="img">
-          <img :src="item.image" />
-          <div class="goodsname">{{item.goodsName}}</div>
-          <div>
-            <span>￥{{item.price}}</span>
-            <span class="mall">￥{{item.mallPrice}}</span>
-          </div>
-          <div class="cart">
-            <div class="check">
-              <span class="shopping-cart-o">
-                <van-icon name="shopping-cart-o" color="#ffffff" />
-              </span>
-              <span class="xiangq">查看详情</span>
+  <div class="content">
+    <div class="recommend">
+      <div class="commodity">商品推荐</div>
+      <van-swipe :width="125" :loop="false" :show-indicators="false">
+        <van-swipe-item v-for="(item,index) in recommend" :key="index">
+          <div class="img">
+            <img :src="item.image" />
+            <div class="goodsname">{{item.goodsName}}</div>
+            <div>
+              <span>￥{{item.price}}</span>
+              <span class="mall">￥{{item.mallPrice}}</span>
+            </div>
+            <div class="cart">
+              <div class="check">
+                <span class="shopping-cart-o">
+                  <van-icon name="shopping-cart-o" color="#ffffff" />
+                </span>
+                <span class="details" @click="Details(index)">查看详情</span>
+              </div>
             </div>
           </div>
-        </div>
-      </van-swipe-item>
-    </van-swipe>
+        </van-swipe-item>
+      </van-swipe>
+    </div>
   </div>
 </template>
 
@@ -34,11 +36,20 @@ export default {
     }
   },
   data() {
-    return {};
+    return {
+      id: ""
+    };
   },
 
   components: {},
-  methods: {},
+  methods: {
+    Details(index) {
+      this.$router.push({
+        path: "/details",
+        query: { id: this.recommend[index].goodsId }
+      });
+    }
+  },
   mounted() {},
   watch: {},
   computed: {}
@@ -46,6 +57,9 @@ export default {
 </script>
 
 <style scoped lang='scss'>
+// .content {
+
+// }
 .commodity {
   background: white;
   padding: 10px 20px;
@@ -83,7 +97,7 @@ img {
   padding: 5px;
   border-radius: 5px 0 0 5px;
 }
-.xiangq {
+.details {
   font-weight: 600px;
   color: #ffffff;
   background: #ff4c38;

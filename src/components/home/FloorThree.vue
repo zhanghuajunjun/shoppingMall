@@ -6,7 +6,7 @@
     </div>
     <div v-for="(item,index) in floor3" :key="index">
       <div :class="[{'left':(index <= 0)},{'right':(index >= 1)}]">
-        <img :src="item.image" />
+        <img :src="item.image" @click="Details(index)"/>
       </div>
     </div>
   </div>
@@ -26,10 +26,19 @@ export default {
     }
   },
   data() {
-    return {};
+    return {
+      id: ''
+    };
   },
   components: {},
-  methods: {},
+  methods: {
+    Details(index) {
+      this.$router.push({
+        path: "/details",
+        query: { id: this.floor3[index].goodsId }
+      });
+    }
+  },
   mounted() {},
   watch: {},
   computed: {}

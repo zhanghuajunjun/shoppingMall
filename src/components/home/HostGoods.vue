@@ -3,7 +3,7 @@
     <div class="host">热销商品</div>
     <div class="flex-j-sb">
       <div v-for="(item,index) in hostGoods" :key="index" class="hostgoods">
-        <img :src="item.image" />
+        <img :src="item.image"  @click="Details(index)"/>
         <div class="goodsname">{{item.name}}</div>
         <div class="introduce">
           <span>￥{{item.price}}</span>
@@ -24,10 +24,19 @@ export default {
     }
   },
   data() {
-    return {};
+    return {
+      id: ''
+    };
   },
   components: {},
-  methods: {},
+  methods: {
+    Details(index) {
+      this.$router.push({
+        path: "/details",
+        query: { id: this.hostGoods[index].goodsId }
+      });
+    }
+  },
   mounted() {},
   watch: {},
   computed: {}

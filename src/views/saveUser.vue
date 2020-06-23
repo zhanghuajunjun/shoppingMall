@@ -41,7 +41,7 @@ export default {
   components: {},
   methods: {
     onClickLeft() {
-      this.$router.push("/self");
+      this.$router.go(-1);
     },
     save() {
       this.$dialog
