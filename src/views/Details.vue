@@ -36,16 +36,44 @@
     </div>
     <div class="goods">
       <van-tabs v-model="active" title-active-color="red">
-        <van-tab title="商品详情"></van-tab>
-        <van-tab title="商品分类"></van-tab>
+        <van-tab title="商品详情">
+          <div v-html="goodsOne.detail"></div>
+        </van-tab>
+        <van-tab title="商品评价"></van-tab>
       </van-tabs>
     </div>
-    <van-goods-action  class="index">
+    <div class="zw"></div>
+    <van-goods-action class="index">
       <van-goods-action-icon icon="chat-o" text="客服" dot />
       <van-goods-action-icon icon="cart-o" text="购物车" badge="5" />
       <van-goods-action-button type="warning" text="加入购物车" />
-      <van-goods-action-button type="danger" text="立即购买" />
+      <van-goods-action-button type="danger" text="立即购买" @click="buy" />
     </van-goods-action>
+    <van-action-sheet v-model="show" round>
+      <div class="content">
+        <div class="flex-j-sb">
+          <div class="d-flex">
+            <img :src="goodsOne.image" class="img" />
+            <div class="f-dir-jc">
+              <div class="buygoods">{{goodsOne.name}}</div>
+              <div class="more">剩余：{{goodsOne.amount}}</div>
+              <div class="price">￥{{goodsOne.present_price}}.00</div>
+            </div>
+          </div>
+          <van-icon name="close" class="close" @click="close" />
+        </div>
+        <div class="buycount">
+          <div>
+            购买数量：
+          </div>
+          <div class="Quota">
+            每人限购50件
+            <van-stepper v-model="value" theme="round" button-size="22" max="50" disable-input class="stepper"/>
+          </div>
+        </div>
+        <van-button type="danger" size="large" class="van-btn">立即购买</van-button>
+      </div>
+    </van-action-sheet>
   </div>
 </template>
 
@@ -57,13 +85,22 @@ export default {
     return {
       goodsId: "",
       goodsOne: {},
-      active: 0
+      active: 0,
+      show: false,
+      round: false,
+      value: 1
     };
   },
   components: {},
   methods: {
-    goTo(){
-      this.$router.go(-1)
+    goTo() {
+      this.$router.go(-1);
+    },
+    buy() {
+      this.show = true;
+    },
+    close() {
+      this.show = false;
     }
   },
   mounted() {
@@ -155,7 +192,58 @@ img {
   margin: 0 -10px;
   margin-top: 15px;
 }
+/deep/.van-tabs__content {
+  padding-top: 10px;
+}
+.zw {
+  height: 50px;
+  margin-bottom: -10px;
+}
 .index {
   z-index: 99;
+}
+/deep/img {
+  margin-bottom: -5px;
+}
+.img {
+  width: 25%;
+  margin-right: 15px;
+  border: 1px solid #eeeeee;
+}
+.close {
+  font-size: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+.buygoods {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+.flex-j-sb {
+  padding: 0 15px;
+  margin: 20px 0;
+}
+.more {
+  font-size: 12px;
+  color: #999;
+}
+.buycount {
+  border-bottom: 1px solid #eeeeee;
+  border-top: 1px solid #eeeeee;
+  padding: 20px 20px 20px 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.Quota {
+  color: red;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+}
+.stepper {
+  margin-left: 20px;
+}
+.van-btn {
+  margin-top: 30px;
 }
 </style>

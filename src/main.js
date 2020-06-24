@@ -19,6 +19,9 @@ import { PullRefresh } from 'vant';
 import { Sidebar, SidebarItem } from 'vant';
 import { Tab, Tabs } from 'vant';
 import { IndexBar, IndexAnchor } from 'vant';import { Dialog } from 'vant';
+import { Sku } from 'vant';
+
+Vue.use(Sku);
 
 
 Vue.use(Dialog);

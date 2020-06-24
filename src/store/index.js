@@ -8,9 +8,6 @@ export default new Vuex.Store({
     categorys: [],
     citya: '',
     userInfos: {},
-    year: '',
-    month: '',
-    day: ''
   },
   mutations: {
     setCategorys(state,data) {
@@ -21,15 +18,6 @@ export default new Vuex.Store({
     },
     setUserInfos(state,data) {
       state.userInfos = data
-    },
-    setYear(state,data) {
-      state.year = data
-    },
-    setMonth(state,data) {
-      state.month = data
-    },
-    setDay(state,data) {
-      state.day = data
     },
   },
   actions: {

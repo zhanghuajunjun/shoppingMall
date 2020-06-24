@@ -22,3 +22,21 @@
 2020-06-23 08:49:40,830 INFO 8796 [Timer] F:\项目练习\shoppingmall\server\node_modules\_egg-multipart@2.10.3@egg-multipart\app\schedule\clean_tmpdir.js next time will execute after 70819175ms at 2020-06-24 04:30:00.005
 2020-06-23 08:49:40,831 INFO 8796 [Timer] F:\项目练习\shoppingmall\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\clean_log.js next time will execute after 54619169ms at 2020-06-24 00:00:00.000
 2020-06-23 08:49:40,832 INFO 8796 [Timer] F:\项目练习\shoppingmall\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\rotate_by_file.js next time will execute after 54620169ms at 2020-06-24 00:00:01.001
+2020-06-23 17:58:38,507 INFO 4844 [egg-schedule]: register schedule F:\项目练习\shoppingmall\server\node_modules\_egg-multipart@2.10.3@egg-multipart\app\schedule\clean_tmpdir.js
+2020-06-23 17:58:38,507 INFO 4844 [egg-schedule]: register schedule F:\项目练习\shoppingmall\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\clean_log.js
+2020-06-23 17:58:38,507 INFO 4844 [egg-schedule]: register schedule F:\项目练习\shoppingmall\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\rotate_by_file.js
+2020-06-23 17:58:47,325 INFO 14228 [Timer] F:\项目练习\shoppingmall\server\node_modules\_egg-multipart@2.10.3@egg-multipart\app\schedule\clean_tmpdir.js next time will execute after 37872678ms at 2020-06-24 04:30:00.003
+2020-06-23 17:58:47,326 INFO 14228 [Timer] F:\项目练习\shoppingmall\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\clean_log.js next time will execute after 21672674ms at 2020-06-24 00:00:00.000
+2020-06-23 17:58:47,326 INFO 14228 [Timer] F:\项目练习\shoppingmall\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\rotate_by_file.js next time will execute after 21673674ms at 2020-06-24 00:00:01.000
+2020-06-24 08:48:19,959 INFO 2684 [egg-schedule]: register schedule F:\项目练习\shoppingmall\server\node_modules\_egg-multipart@2.10.3@egg-multipart\app\schedule\clean_tmpdir.js
+2020-06-24 08:48:19,959 INFO 2684 [egg-schedule]: register schedule F:\项目练习\shoppingmall\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\clean_log.js
+2020-06-24 08:48:19,959 INFO 2684 [egg-schedule]: register schedule F:\项目练习\shoppingmall\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\rotate_by_file.js
+2020-06-24 08:48:26,002 INFO 10460 [Timer] F:\项目练习\shoppingmall\server\node_modules\_egg-multipart@2.10.3@egg-multipart\app\schedule\clean_tmpdir.js next time will execute after 70894004ms at 2020-06-25 04:30:00.006
+2020-06-24 08:48:26,003 INFO 10460 [Timer] F:\项目练习\shoppingmall\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\clean_log.js next time will execute after 54693998ms at 2020-06-25 00:00:00.001
+2020-06-24 08:48:26,004 INFO 10460 [Timer] F:\项目练习\shoppingmall\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\rotate_by_file.js next time will execute after 54694997ms at 2020-06-25 00:00:01.001
+2020-06-24 10:03:51,150 INFO 14728 [egg-schedule]: register schedule F:\项目练习\shoppingmall\server\node_modules\_egg-multipart@2.10.3@egg-multipart\app\schedule\clean_tmpdir.js
+2020-06-24 10:03:51,150 INFO 14728 [egg-schedule]: register schedule F:\项目练习\shoppingmall\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\clean_log.js
+2020-06-24 10:03:51,150 INFO 14728 [egg-schedule]: register schedule F:\项目练习\shoppingmall\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\rotate_by_file.js
+2020-06-24 10:03:52,799 INFO 12400 [Timer] F:\项目练习\shoppingmall\server\node_modules\_egg-multipart@2.10.3@egg-multipart\app\schedule\clean_tmpdir.js next time will execute after 66367204ms at 2020-06-25 04:30:00.003
+2020-06-24 10:03:52,800 INFO 12400 [Timer] F:\项目练习\shoppingmall\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\clean_log.js next time will execute after 50167201ms at 2020-06-25 00:00:00.001
+2020-06-24 10:03:52,800 INFO 12400 [Timer] F:\项目练习\shoppingmall\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\rotate_by_file.js next time will execute after 50168200ms at 2020-06-25 00:00:01.000

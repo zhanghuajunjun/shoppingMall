@@ -87,7 +87,6 @@ export default {
       .recommend()
       .then(res => {
         this.slides = res.data.slides;
-        this.category = res.data.category;
         this.obj = res.data.advertesPicture;
         this.recommend = res.data.recommend;
         this.floorName = res.data.floorName;
@@ -95,8 +94,8 @@ export default {
         this.floor2 = res.data.floor2;
         this.floor3 = res.data.floor3;
         this.hostGoods = res.data.hotGoods;
-        this.$store.commit("setCategorys", res.data.category);
-
+        this.category = res.data.category
+        localStorage.setItem('category', JSON.stringify(this.category))
         console.log(res);
       })
       .catch(err => {});
@@ -106,11 +105,7 @@ export default {
     });
   },
   watch: {},
-  computed: {
-    categorys() {
-      return this.$store.state.categorys;
-    }
-  }
+  computed: {}
 };
 </script>
 
@@ -126,7 +121,8 @@ export default {
   background: #f2f2f2;
 }
 .content {
-  // height: 4137px;
+  // overflow: hidden;
+  // height: 90vh;
   background: #f2f2f2;
 }
 .item {

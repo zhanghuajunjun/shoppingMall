@@ -49,6 +49,11 @@
     justify-content: center;
     align-items: center;
 }
+.f-dir-jc{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 /* 超出部分省略 */
 .wh-text-over{
     white-space: nowrap;

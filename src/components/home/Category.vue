@@ -1,7 +1,7 @@
 <template>
   <div class="card flex-j-sb">
     <div v-for="(item,index) in category" :key="index">
-      <div class="f-dir-mid">
+      <div class="f-dir-mid" @click="categorys(index)">
         <img :src="item.image" />
         <div class="mallCategoryName">{{item.mallCategoryName}}</div>
       </div>
@@ -22,7 +22,15 @@ export default {
     return {};
   },
   components: {},
-  methods: {},
+  methods: {
+    categorys(index) {
+      this.$router.push({
+        name: 'Categorys',
+        query: {index: index}
+      })
+      console.log(index);
+    }
+  },
   mounted() {},
   watch: {},
   computed: {}

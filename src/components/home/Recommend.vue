@@ -5,7 +5,7 @@
       <van-swipe :width="125" :loop="false" :show-indicators="false">
         <van-swipe-item v-for="(item,index) in recommend" :key="index">
           <div class="img">
-            <img :src="item.image" />
+            <img :src="item.image" @click="Details(index)"/>
             <div class="goodsname">{{item.goodsName}}</div>
             <div>
               <span>￥{{item.price}}</span>

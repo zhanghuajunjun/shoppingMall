@@ -16,7 +16,7 @@ export default {
   },
 
   // 3、分类查询  get 
-  catagorical() {
+  catagorical(id) {
     // id:默认分类的id
     return service.get(`/classification?mallSubId=${id}`)
   },
