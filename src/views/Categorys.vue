@@ -9,21 +9,18 @@
           </div>
         </van-sidebar>
       </div>
-
       <div class="tab">
-        <van-tabs v-model="activeIdenx">
-          <van-tab
-            v-for="(item,index) in bxMallSubDto"
-            :key="index"
-            :title="item.mallSubName"
-          >
-            <div v-for="(item,index) in dataList" :key="index">
-              <van-card
-                :price="item.present_price"
-                :title="item.name"
-                :thumb="item.image_path"
-                :origin-price="item.orl_price"
-              />
+        <van-tabs v-model="active" @click="clickItem" line-width='20%' title-active-color='red'>
+          <van-tab v-for="(item,index1) in bxMallSubDto" :key="index1" :title="item.mallSubName">
+            <div class="tab-item">
+              <div v-for="(item,index) in dataList" :key="index" @click="goDetail(item)">
+                <van-card
+                  :price="item.present_price"
+                  :title="item.name"
+                  :thumb="item.image_path"
+                  :origin-price="item.orl_price"
+                />
+              </div>
             </div>
           </van-tab>
         </van-tabs>
@@ -41,24 +38,41 @@ export default {
       activeKey: 0,
       category: [],
       bxMallSubDto: [],
-      id: "",
+      ids: "",
       dataList: [],
-      activeIdenx: 0
+      active: 0,
+      id: ""
     };
   },
   components: {},
   methods: {
+    onChange(index) {
+      this.active = 0;
+      this.activeKey = index;
+      this.bxMallSubDto = this.category[this.activeKey].bxMallSubDto;
+      this.ids = this.category[this.activeKey].bxMallSubDto[this.active].mallSubId;
+      this.getData();
+    },
+    clickItem(index) {
+      this.active = index;
+      this.ids = this.category[this.activeKey].bxMallSubDto[
+        this.active
+      ].mallSubId;
+      this.getData();
+    },
     getData() {
       this.$api
-        .catagorical(this.id)
+        .catagorical(this.ids)
         .then(res => {
           this.dataList = res.dataList;
-          console.log(res);
         })
         .catch(err => {});
     },
-    onChange(index) {
-      this.bxMallSubDto = this.category[index].bxMallSubDto;
+    goDetail(item) {
+      this.$router.push({
+        path: "/details",
+        query: { id: item.id }
+      });
     }
   },
   mounted() {
@@ -66,10 +80,14 @@ export default {
     this.bxMallSubDto = this.category[0].bxMallSubDto;
     if (this.$route.query.index) {
       this.activeKey = this.$route.query.index;
-      this.id = this.category[this.activeKey].bxMallSubDto[0].mallSubId;
+      this.ids = this.category[this.activeKey].bxMallSubDto[
+        this.active
+      ].mallSubId;
       this.getData();
     } else {
-      this.id = this.category[0].bxMallSubDto[0].mallSubId;
+      this.ids = this.category[this.activeKey].bxMallSubDto[
+        this.active
+      ].mallSubId;
       this.getData();
     }
   },
@@ -79,22 +97,21 @@ export default {
 </script>
 
 <style scoped lang='scss'>
-.sidebar {
-  height: 500px;
-  background: rgb(247, 248, 250);
-  width: 120px;
-}
-/deep/.van-tab {
-  height: 60px;
-}
-.tab {
-  width: 100%;
-}
 .cate {
   font-size: 18px;
   text-align: center;
   padding: 10px 0;
   font-weight: 500;
   border-bottom: 1px solid #eeeeee;
+}
+.tab {
+  width: 100%;
+}
+/deep/.van-tab {
+  height: 60px;
+  flex-basis: 27% !important;
+}
+.tab-item {
+  margin-top: 16px;
 }
 </style>

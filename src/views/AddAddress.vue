@@ -52,7 +52,6 @@ export default {
         .then(res => {
           this.$toast("删除成功");
           this.$router.push("/address");
-          console.log(res);
         })
         .catch(err => {});
     }

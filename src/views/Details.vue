@@ -46,7 +46,7 @@
     <van-goods-action class="index">
       <van-goods-action-icon icon="chat-o" text="客服" dot />
       <van-goods-action-icon icon="cart-o" text="购物车" badge="5" />
-      <van-goods-action-button type="warning" text="加入购物车" />
+      <van-goods-action-button type="warning" text="加入购物车" @click="addShops"/>
       <van-goods-action-button type="danger" text="立即购买" @click="buy" />
     </van-goods-action>
     <van-action-sheet v-model="show" round>
@@ -101,6 +101,13 @@ export default {
     },
     close() {
       this.show = false;
+    },
+    addShops() {
+      this.$api.addShop({
+        id:this.goodsOne.id
+      }).then(res => {
+        this.$toast.success('加入购物车成功')
+      }).catch(err => {})
     }
   },
   mounted() {

@@ -23,7 +23,7 @@ export default {
 
   // 4、查询获取购物车数据  get
   getCard() {
-    return service.get(`/getCard`)
+    return service.post(`/getCard`)
   },
 
   // 5、购物车加减商品  post
@@ -39,9 +39,9 @@ export default {
   },
 
   // 6、购物车商品删除 post 
-  deleteShop(id) {
+  deleteShop(idArr) {
     // id: 商品id(数组)
-    return service.post(`/deleteShop`, id)
+    return service.post(`/deleteShop`, idArr)
   },
 
   // 7、购物车支付页面  post

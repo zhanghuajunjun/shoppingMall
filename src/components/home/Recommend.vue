@@ -14,7 +14,7 @@
             <div class="cart">
               <div class="check">
                 <span class="shopping-cart-o">
-                  <van-icon name="shopping-cart-o" color="#ffffff" />
+                  <van-icon name="shopping-cart-o" color="#ffffff" @click="addShop"/>
                 </span>
                 <span class="details" @click="Details(index)">查看详情</span>
               </div>
@@ -37,10 +37,9 @@ export default {
   },
   data() {
     return {
-      id: ""
+      id: "",
     };
   },
-
   components: {},
   methods: {
     Details(index) {
@@ -48,6 +47,14 @@ export default {
         path: "/details",
         query: { id: this.recommend[index].goodsId }
       });
+    },
+    addShop(index){
+      console.log(index);
+      // this.$api.addShop({
+      //   id:this.recommend[index].goodsId
+      // }).then(res => {
+      //   console.log(res);
+      // }).catch(err => {})
     }
   },
   mounted() {},
