@@ -19,9 +19,23 @@
     <div class="amount">
       <div>运费：{{goodsOne.__v}}</div>
       <div>剩余：{{goodsOne.amount}}</div>
-      <div>
-        收藏
-        <van-icon name="like-o" />
+      <div v-if="this.username === null">
+        <div @click="Collection">
+          收藏
+          <van-icon name="like-o" />
+        </div>
+      </div>
+      <div v-else-if="flag===false && this.isCollection === 0">
+        <div @click="Collection">
+          收藏
+          <van-icon name="like-o" />
+        </div>
+      </div>
+      <div v-else>
+        <div @click="cancelCollection">
+          取消收藏
+          <van-icon name="like" class="cancel" />
+        </div>
       </div>
     </div>
     <div class="in">
@@ -44,9 +58,9 @@
     </div>
     <div class="zw"></div>
     <van-goods-action class="index">
-      <van-goods-action-icon icon="chat-o" text="客服" dot />
-      <van-goods-action-icon icon="cart-o" text="购物车" badge="5" />
-      <van-goods-action-button type="warning" text="加入购物车" @click="addShops"/>
+      <van-goods-action-icon icon="chat-o" text="客服" />
+      <van-goods-action-icon icon="cart-o" text="购物车" :badge="shopList" @click="goCart" />
+      <van-goods-action-button type="warning" text="加入购物车" @click="addShops" />
       <van-goods-action-button type="danger" text="立即购买" @click="buy" />
     </van-goods-action>
     <van-action-sheet v-model="show" round>
@@ -63,12 +77,17 @@
           <van-icon name="close" class="close" @click="close" />
         </div>
         <div class="buycount">
-          <div>
-            购买数量：
-          </div>
+          <div>购买数量：</div>
           <div class="Quota">
             每人限购50件
-            <van-stepper v-model="value" theme="round" button-size="22" max="50" disable-input class="stepper"/>
+            <van-stepper
+              v-model="value"
+              theme="round"
+              button-size="22"
+              max="50"
+              disable-input
+              class="stepper"
+            />
           </div>
         </div>
         <van-button type="danger" size="large" class="van-btn">立即购买</van-button>
@@ -88,7 +107,12 @@ export default {
       active: 0,
       show: false,
       round: false,
-      value: 1
+      value: 1,
+      shopList: "",
+      username: "",
+      isCollection: "",
+      id: "",
+      flag: false
     };
   },
   components: {},
@@ -102,21 +126,83 @@ export default {
     close() {
       this.show = false;
     },
+    goCart() {
+      this.$router.push("/shoppingCart");
+    },
+    Collection() {
+      if (this.username === null) {
+        this.$dialog
+          .confirm({
+            message: "您还没有登录，是否要登录？"
+          })
+          .then(res => {
+            this.$router.push("/login");
+          })
+          .catch(() => {});
+      } else {
+        this.$api
+          .collection(this.goodsOne)
+          .then(res => {
+            console.log(res);
+            this.$toast.success("收藏成功");
+            this.flag = true;
+          })
+          .catch(err => {});
+      }
+    },
+    cancelCollection() {
+      this.$api
+        .cancelCollection(this.id)
+        .then(res => {
+          this.$toast.success("取消成功");
+          this.flag = false;
+          this.$api
+            .isCollection(this.goodsId)
+            .then(res => {
+              console.log(res);
+              this.isCollection = res.isCollection;
+            })
+            .catch(err => {});
+        })
+        .catch(err => {});
+    },
     addShops() {
-      this.$api.addShop({
-        id:this.goodsOne.id
-      }).then(res => {
-        this.$toast.success('加入购物车成功')
-      }).catch(err => {})
+      if (this.username === null) {
+        this.$dialog
+          .confirm({
+            message: "您还没有登录，是否要登录？"
+          })
+          .then(res => {
+            this.$router.push("/login");
+          })
+          .catch(() => {});
+      } else {
+        this.$api
+          .addShop({
+            id: this.goodsOne.id
+          })
+          .then(res => {
+            this.$toast.success("加入购物车成功");
+          })
+          .catch(err => {});
+      }
     }
   },
   mounted() {
+    this.username = localStorage.getItem("username");
+    this.shopList = localStorage.getItem("shopList");
     this.goodsId = this.$route.query.id;
     this.$api
       .goods(this.goodsId)
       .then(res => {
         this.goodsOne = res.goods.goodsOne;
-        console.log(res);
+        this.id = res.goods.goodsOne.id;
+      })
+      .catch(err => {});
+    this.$api
+      .isCollection(this.goodsId)
+      .then(res => {
+        this.isCollection = res.isCollection;
       })
       .catch(err => {});
   },
@@ -206,9 +292,9 @@ img {
   height: 50px;
   margin-bottom: -10px;
 }
-.index {
-  z-index: 99;
-}
+// .index {
+//   z-index: 99;
+// }
 /deep/img {
   margin-bottom: -5px;
 }
@@ -252,5 +338,8 @@ img {
 }
 .van-btn {
   margin-top: 30px;
+}
+.cancel {
+  color: red;
 }
 </style>

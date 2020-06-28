@@ -49,7 +49,7 @@ export default {
           this.$set(item,'id',(index+1).toString())
         })
         this.list = res.address;
-        console.log(res);
+        console.log(this.list);
       })
       .catch(err => {});
   },

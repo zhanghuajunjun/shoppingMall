@@ -68,6 +68,16 @@ const routes = [
     component: () => import('../views/EidtAddress.vue')
   },
   {
+    path: '/collection',
+    name: 'Collection',
+    component: () => import('../views/Collection.vue')
+  },
+  {
+    path: '/settlement',
+    name: 'Settlement',
+    component: () => import('../views/Settlement.vue')
+  },
+  {
     path: '/details',
     name: 'Details',
     component: () => import('../views/Details.vue')

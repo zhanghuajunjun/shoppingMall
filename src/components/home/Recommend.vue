@@ -5,7 +5,7 @@
       <van-swipe :width="125" :loop="false" :show-indicators="false">
         <van-swipe-item v-for="(item,index) in recommend" :key="index">
           <div class="img">
-            <img :src="item.image" @click="Details(index)"/>
+            <img :src="item.image" />
             <div class="goodsname">{{item.goodsName}}</div>
             <div>
               <span>￥{{item.price}}</span>
@@ -14,7 +14,7 @@
             <div class="cart">
               <div class="check">
                 <span class="shopping-cart-o">
-                  <van-icon name="shopping-cart-o" color="#ffffff" @click="addShop"/>
+                  <van-icon name="shopping-cart-o" color="#ffffff" @click="addShop(index)" />
                 </span>
                 <span class="details" @click="Details(index)">查看详情</span>
               </div>
@@ -37,7 +37,7 @@ export default {
   },
   data() {
     return {
-      id: "",
+      username: ''
     };
   },
   components: {},
@@ -48,13 +48,27 @@ export default {
         query: { id: this.recommend[index].goodsId }
       });
     },
-    addShop(index){
-      console.log(index);
-      // this.$api.addShop({
-      //   id:this.recommend[index].goodsId
-      // }).then(res => {
-      //   console.log(res);
-      // }).catch(err => {})
+    addShop(index) {
+      this.username = localStorage.getItem("username");
+      if (this.username === null) {
+        this.$dialog
+          .confirm({
+            message: "您还没有登录，是否要登录？"
+          })
+          .then(res => {
+            this.$router.push("/login");
+          })
+          .catch(() => {});
+      } else {
+        this.$api
+          .addShop({
+            id: this.recommend[index].goodsId
+          })
+          .then(res => {
+            this.$toast.success("加入购物车成功");
+          })
+          .catch(err => {});
+      }
     }
   },
   mounted() {},
@@ -64,9 +78,6 @@ export default {
 </script>
 
 <style scoped lang='scss'>
-// .content {
-
-// }
 .commodity {
   background: white;
   padding: 10px 20px;

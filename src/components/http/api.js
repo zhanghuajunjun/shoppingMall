@@ -77,13 +77,13 @@ export default {
   // 10、取消收藏  post
   cancelCollection(id) {
     // id:商品的cid
-    return service.post(`/cancelCollection`, id)
+    return service.post(`/cancelCollection`, {id})
   },
 
   // 11、查询商品是否已收藏  post
   isCollection(id) {
     // id:商品的id
-    return service.post(`/isCollection`, id)
+    return service.post(`/isCollection`, {id})
   },
 
   // 12、加入购物车 post

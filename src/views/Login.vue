@@ -73,7 +73,7 @@ export default {
   components: {},
   methods: {
     goTo(){
-      this.$router.push('-1');
+      this.$router.push('/');
     },
     SMS() {
       if (this.flag) {
@@ -115,6 +115,7 @@ export default {
           if (res.code === 200) {
             this.$toast("登录成功");
             this.$router.push("/");
+            localStorage.setItem("username", this.username);
           } else if (res.code === -1) {
             this.$dialog.alert({
               message: "密码错误"
@@ -138,7 +139,6 @@ export default {
           if (res.code === 200) {
             this.$toast("注册成功");
             this.$router.push("/");
-            localStorage.setItem("username", this.username);
           } else if (res.code === -1) {
             this.$dialog.alert({
               message: "用户已存在"

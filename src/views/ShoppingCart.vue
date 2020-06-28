@@ -69,7 +69,8 @@ export default {
     return {
       checkAll: false,
       shopList: [],
-      arr: []
+      arr: [],
+      ass: []
     };
   },
   methods: {
@@ -90,7 +91,6 @@ export default {
     },
     //    是否全选
     check(item) {
-      this.arr.push(item.cid);
       this.checkAll = this.shopList.every(item => {
         return item.check === true;
       });
@@ -108,28 +108,48 @@ export default {
     },
     // 删除
     del() {
-      this.$dialog
-        .confirm({
-          title: "提示",
-          message: "您确定要删除吗？"
-        })
-        .then(() => {
-          this.$api
-            .deleteShop(this.arr)
-            .then(res => {
-              this.$toast.success("删除成功");
-              this.getData();
-            })
-            .catch(err => {});
-        })
-        .catch(() => {});
+      this.ass = this.shopList.filter(item => {
+        return item.check === true;
+      });
+      if (this.ass.length > 0) {
+        this.$dialog
+          .confirm({
+            title: "提示",
+            message: "您确定要删除吗？"
+          })
+          .then(() => {
+            this.ass.map(item => {
+              this.arr.push(item.cid);
+            });
+            this.$api
+              .deleteShop(this.arr)
+              .then(res => {
+                this.$toast.success("删除成功");
+                this.getData();
+              })
+              .catch(err => {});
+          })
+          .catch(() => {});
+      } else {
+        this.$toast({
+          message: "你还没有选择要删除的内容",
+          icon: "warning-o"
+        });
+      }
     },
     buyShop() {
       this.$router.push("/");
     },
     // 结算页面
     Goto() {
-      this.$router.push("Settlement");
+      this.ass = this.shopList.filter(item => {
+        return item.check === true;
+      });
+      if (this.ass.length > 0) {
+        this.$router.push({ path: "/settlement", query: { ass: this.ass } });
+      } else {
+        this.$toast.fail('没有要结算的商品')
+      }
     }
   },
   mounted() {

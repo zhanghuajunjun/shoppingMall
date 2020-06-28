@@ -10,17 +10,15 @@
         </van-sidebar>
       </div>
       <div class="tab">
-        <van-tabs v-model="active" @click="clickItem" line-width='20%' title-active-color='red'>
+        <van-tabs v-model="active" @click="clickItem" line-width="20%" title-active-color="red">
           <van-tab v-for="(item,index1) in bxMallSubDto" :key="index1" :title="item.mallSubName">
-            <div class="tab-item">
-              <div v-for="(item,index) in dataList" :key="index" @click="goDetail(item)">
-                <van-card
-                  :price="item.present_price"
-                  :title="item.name"
-                  :thumb="item.image_path"
-                  :origin-price="item.orl_price"
-                />
-              </div>
+            <div v-for="(item,index) in dataList" :key="index" @click="goDetail(item)">
+              <van-card
+                :price="item.present_price"
+                :title="item.name"
+                :thumb="item.image_path"
+                :origin-price="item.orl_price"
+              />
             </div>
           </van-tab>
         </van-tabs>
@@ -50,7 +48,9 @@ export default {
       this.active = 0;
       this.activeKey = index;
       this.bxMallSubDto = this.category[this.activeKey].bxMallSubDto;
-      this.ids = this.category[this.activeKey].bxMallSubDto[this.active].mallSubId;
+      this.ids = this.category[this.activeKey].bxMallSubDto[
+        this.active
+      ].mallSubId;
       this.getData();
     },
     clickItem(index) {
@@ -69,6 +69,7 @@ export default {
         .catch(err => {});
     },
     goDetail(item) {
+      console.log(item);
       this.$router.push({
         path: "/details",
         query: { id: item.id }
@@ -108,10 +109,9 @@ export default {
   width: 100%;
 }
 /deep/.van-tab {
-  height: 60px;
   flex-basis: 27% !important;
 }
-.tab-item {
-  margin-top: 16px;
+/deep/.van-tabs--line .van-tabs__wrap {
+  height: 60px;
 }
 </style>

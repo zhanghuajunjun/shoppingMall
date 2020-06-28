@@ -6,9 +6,13 @@
       <div class="avatar">
         <img :src="userInfo.avatar" />
       </div>
-      <div class="wel" v-if="flag">欢迎您：{{userInfo.nickname}}</div>
-      <div class="out" @click="out" v-if="flag">退出登录</div>
-      <div class="out" @click="login" v-else-if="flag==false">登录/注册</div>
+      <div v-if="this.username === null">
+        <div class="out" @click="login">登录/注册</div>
+      </div>
+      <div v-else>
+        <div class="wel">欢迎您：{{userInfo.nickname}}</div>
+        <div class="out" @click="out">退出登录</div>
+      </div>
     </div>
     <div class="flex-j-sa">
       <div class="f-dir-mid">
@@ -33,7 +37,7 @@
       </div>
     </div>
     <van-cell title="全部订单" is-link to="index" class="order" icon="records" />
-    <van-cell title="收藏商品" is-link to="index" icon="star-o" class="cell" />
+    <van-cell title="收藏商品" is-link to="collection" icon="star-o" class="cell" />
     <van-cell title="地址管理" is-link to="address" icon="location-o" />
     <van-cell title="最近浏览" is-link to="index" icon="eye-o" class="cell" />
   </div>
@@ -46,7 +50,7 @@ export default {
   data() {
     return {
       userInfo: {},
-      flag: "true",
+      username: ""
     };
   },
   components: {},
@@ -62,23 +66,22 @@ export default {
         })
         .then(() => {
           this.flag = false;
-
+          localStorage.removeItem("username");
         })
-          // on cancel
-        .catch(() => {
-        });
+        // on cancel
+        .catch(() => {});
     },
     login() {
       this.$router.push("/login");
     }
   },
   mounted() {
+    this.username = localStorage.getItem("username");
     this.$api
       .queryUser()
       .then(res => {
         this.userInfo = res.userInfo;
         this.$store.commit("setUserInfos", res.userInfo);
-        console.log(res);
       })
       .catch(err => {});
   },
