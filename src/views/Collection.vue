@@ -2,7 +2,7 @@
   <div>
     <van-nav-bar title="我的收藏" left-arrow @click-left="onClickLeft" />
     <div class="box">
-      <div v-for="(item,index) in list" :key="index">
+      <div v-for="(item,index) in collection" :key="index">
         <div class="d-flex">
           <img :src="item.image_path" class="img" />
           <div class="item">
@@ -25,39 +25,31 @@ export default {
   data() {
     return {
       arr: [],
-      list: []
+      list: [],
+      collection: []
     };
   },
   components: {},
   methods: {
-    getData() {
-      this.$api
-        .collectionList()
-        .then(res => {
-          this.arr = res.data.list;
-          console.log(res);
-          for (let i = 0; i < this.arr.length; i++) {
-            if (this.arr.indexOf(this.arr[i]) === i) {
-              this.list.push(this.arr[i]);
-            }
-          }
-        })
-        .catch(err => {});
-    },
     onClickLeft() {
       this.$router.go(-1);
     },
     close(index) {
-      this.$api
-        .cancelCollection(this.list[index].cid)
-        .then(res => {
-          this.$toast.success("删除成功");
+      this.$dialog
+        .confirm({
+          title: "确认删除该条收藏"
         })
-        .catch(err => {});
+        .then(() => {
+          this.collection = JSON.parse(localStorage.getItem("collect"));
+          this.collection.splice(index, 1);
+          localStorage.setItem("collect", JSON.stringify(this.collection));
+        })
+        .catch(() => {});
     }
   },
   mounted() {
-    this.getData()
+    this.collection = JSON.parse(localStorage.getItem("collect"));
+    console.log(this.collection);
   },
   watch: {},
   computed: {}

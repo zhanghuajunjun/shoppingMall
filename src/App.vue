@@ -6,4 +6,7 @@
 
 <style lang="scss">
 @import '../src/style/common';
+.highlights-text {
+  color: red;
+}
 </style>

@@ -70,7 +70,9 @@ export default {
       checkAll: false,
       shopList: [],
       arr: [],
-      ass: []
+      ass: [],
+      arr1: [],
+      flag: 1
     };
   },
   methods: {
@@ -79,7 +81,7 @@ export default {
         .getCard()
         .then(res => {
           this.shopList = res.shopList;
-          localStorage.setItem("shopList", this.shopList.length);
+          localStorage.setItem("length", this.shopList.length);
         })
         .catch(err => {});
     },
@@ -146,16 +148,22 @@ export default {
         return item.check === true;
       });
       if (this.ass.length > 0) {
-        this.$router.push({ path: "/settlement", query: { ass: this.ass } });
+        this.$router.push({
+          path: "/settlement",
+          query: { flag: this.flag, total: this.total }
+        });
+        localStorage.setItem("shopList", JSON.stringify(this.ass));
       } else {
-        this.$toast.fail('没有要结算的商品')
+        this.$toast.fail("没有要结算的商品");
       }
     }
   },
   mounted() {
     this.getData();
   },
-  watch: {},
+  watch: {
+    
+  },
   computed: {
     // 定义总价
     total() {

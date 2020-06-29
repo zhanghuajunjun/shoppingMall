@@ -20,14 +20,14 @@ import { Sidebar, SidebarItem } from 'vant';
 import { Tab, Tabs } from 'vant';
 import { IndexBar, IndexAnchor } from 'vant';import { Dialog } from 'vant';
 import { Sku } from 'vant';
+import utils from './utils';
+
+
+
+
 
 Vue.use(Sku);
-
-
 Vue.use(Dialog);
-
-
-
 Vue.use(IndexBar);
 Vue.use(IndexAnchor);
 Vue.use(Tab);
@@ -50,6 +50,7 @@ Vue.use(Vant);
 
 Vue.prototype.$api = api
 Vue.prototype.$dayjs = dayjs
+Vue.prototype.$utils = utils;
 
 Vue.config.productionTip = false
 

@@ -9,10 +9,10 @@ export default {
     return service.get(`/recommend`)
   },
 
-  // 2、搜索  get
+  // 2、搜索  post
   search(value) {
     // 参数: value: 搜索关键词
-    return service.get(`/search?value=${value}`)
+    return service.post(`/search`,{value})
   },
 
   // 3、分类查询  get 

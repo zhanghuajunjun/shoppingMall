@@ -27,18 +27,33 @@
       <div class="caitiao">
         <img src="../../项目资料/可能要用的图片/caitiao.jpg" width="100%" />
       </div>
-      <div v-for="(item,index) in shopList" :key="index" class="d-flex">
-        <img :src="item.image_path" class="img" />
-        <div>
-          <div class="name">{{item.name}}</div>
-          <div class="flex-j-sb">
-            <div class="price">￥{{item.present_price}}</div>
-            <div class="count">X{{item.count}}</div>
+      <div v-if="flag===1">
+        <div v-for="(item,index) in shopList" :key="index" class="d-flex">
+          <img :src="item.image_path" class="img" />
+          <div class="item">
+            <div class="name">{{item.name}}</div>
+            <div class="flex-j-sb">
+              <div class="price">￥{{item.present_price}}</div>
+              <div class="count">X{{item.count}}</div>
+            </div>
           </div>
         </div>
+        <div>
+          <van-submit-bar :price="this.total*100" button-text="提交订单" @submit="onSubmit" />
+        </div>
       </div>
-      <div>
-        <van-submit-bar :price="total*100" button-text="提交订单" @submit="onSubmit" />
+      <div v-if="flags===0" class="d-flex">
+        <img :src="this.goodsOne.image_path" class="img" />
+        <div class="item">
+          <div class="name">{{this.goodsOne.name}}</div>
+          <div class="flex-j-sb">
+            <div class="price">￥{{this.goodsOne.present_price}}</div>
+            <div class="count">X{{this.counts}}</div>
+          </div>
+        </div>
+        <div>
+          <van-submit-bar :price="totals*100" button-text="提交订单" @submit="onSubmit" />
+        </div>
       </div>
     </div>
   </div>
@@ -51,7 +66,14 @@ export default {
   data() {
     return {
       shopList: [],
-      defaultAdd: {}
+      defaultAdd: {},
+      arr: [],
+      count: "",
+      goodsOne: {},
+      counts: "",
+      flag: 0,
+      flags: 1,
+      total: ""
     };
   },
   components: {},
@@ -61,27 +83,66 @@ export default {
     },
     onClickLeft() {
       this.$router.go(-1);
+    },
+    onSubmit() {
+      if (this.flag === 1) {
+        this.shopList.map(item => {
+          this.arr.push(item.cid);
+        });
+        this.$api
+          .order({
+            address: this.defaultAdd.address,
+            tel: this.defaultAdd.tel,
+            orderId: this.arr,
+            totalPrice: this.total,
+            idDirect: false,
+            count: this.count
+          })
+          .then(res => {
+            console.log(res);
+            this.$toast.success(res.msg);
+            this.$router.push("/");
+          })
+          .catch(err => {});
+      }
+      if (this.flags === 0) {
+        this.arr.push(this.goodsOne.id)
+        this.$api
+          .order({
+            address: this.defaultAdd.address,
+            tel: this.defaultAdd.tel,
+            orderId: this.arr,
+            totalPrice: this.totals,
+            idDirect: true,
+            count: this.counts
+          })
+          .then(res => {
+            console.log(res);
+            this.$toast.success(res.msg);
+            this.$router.push("/");
+          })
+          .catch(err => {});
+      }
     }
   },
   mounted() {
-    this.shopList = this.$route.query.ass;
-    console.log(this.shopList);
+    this.goodsOne = this.$route.query.goodsOne;
+    this.counts = this.$route.query.count;
+    this.shopList = JSON.parse(localStorage.getItem("shopList"));
+    this.flag = this.$route.query.flag;
+    this.flags = this.$route.query.flags;
+    this.total = this.$route.query.total;
     this.$api
       .getDefaultAddress()
       .then(res => {
         this.defaultAdd = res.defaultAdd;
-        console.log(res);
       })
       .catch(err => {});
   },
   watch: {},
   computed: {
-    total() {
-      let sum = 0;
-      this.shopList.map(item => {
-        sum += item.mallPrice * item.count;
-      });
-      return sum;
+    totals() {
+      return this.goodsOne.present_price * this.counts;
     }
   }
 };
@@ -131,6 +192,9 @@ export default {
 .name {
   color: red;
   margin-bottom: 15px;
+}
+.item {
+  width: 100%;
 }
 .price {
   color: red;

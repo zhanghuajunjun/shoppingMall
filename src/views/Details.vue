@@ -59,7 +59,7 @@
     <div class="zw"></div>
     <van-goods-action class="index">
       <van-goods-action-icon icon="chat-o" text="客服" />
-      <van-goods-action-icon icon="cart-o" text="购物车" :badge="shopList" @click="goCart" />
+      <van-goods-action-icon icon="cart-o" text="购物车" :badge="length" @click="goCart" />
       <van-goods-action-button type="warning" text="加入购物车" @click="addShops" />
       <van-goods-action-button type="danger" text="立即购买" @click="buy" />
     </van-goods-action>
@@ -90,7 +90,7 @@
             />
           </div>
         </div>
-        <van-button type="danger" size="large" class="van-btn">立即购买</van-button>
+        <van-button type="danger" size="large" class="van-btn" @click="buyShop">立即购买</van-button>
       </div>
     </van-action-sheet>
   </div>
@@ -104,15 +104,17 @@ export default {
     return {
       goodsId: "",
       goodsOne: {},
+      goods: {},
       active: 0,
       show: false,
       round: false,
       value: 1,
-      shopList: "",
+      length: "",
       username: "",
       isCollection: "",
       id: "",
-      flag: false
+      flag: false,
+      flags: 0
     };
   },
   components: {},
@@ -146,6 +148,7 @@ export default {
             console.log(res);
             this.$toast.success("收藏成功");
             this.flag = true;
+            this.$utils.Collection(this.goodsOne)
           })
           .catch(err => {});
       }
@@ -186,15 +189,25 @@ export default {
           })
           .catch(err => {});
       }
+    },
+
+    buyShop() {
+      localStorage.setItem("count", this.value);
+      this.$router.push({
+        path: "/settlement",
+        query: { goodsOne: this.goodsOne, count: this.value, flags: this.flags }
+      });
     }
   },
   mounted() {
     this.username = localStorage.getItem("username");
-    this.shopList = localStorage.getItem("shopList");
+    this.length = localStorage.getItem("length");
     this.goodsId = this.$route.query.id;
     this.$api
       .goods(this.goodsId)
       .then(res => {
+        console.log(res);
+        this.goods = res.goods;
         this.goodsOne = res.goods.goodsOne;
         this.id = res.goods.goodsOne.id;
       })

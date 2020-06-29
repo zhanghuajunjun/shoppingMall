@@ -1,38 +1,57 @@
 <template>
   <div class="dv">
-    <div class="tops">
-      <tops></tops>
+    <div class="top">
+      <div class="tops">
+        <tops></tops>
+      </div>
+      <div class="search">
+        <van-search
+          v-model="value"
+          show-action
+          placeholder="请输入搜索关键词"
+          @focus="onFocus"
+          @search="onSearch"
+          class="backg"
+        >
+          <template #action>
+            <div v-if="flag===false">搜索</div>
+            <div v-else-if="flag===true" @click="onCancel">取消</div>
+          </template>
+        </van-search>
+      </div>
     </div>
     <div class="zhanwei"></div>
     <van-pull-refresh v-model="isLoading" success-text="刷新成功" @refresh="onRefresh">
-      <div class="content" ref="contents">
-        <div class="item">
-          <div>
-            <Rotation :slides="slides"></Rotation>
-          </div>
-          <div class="category">
-            <Category :category="category"></Category>
-          </div>
-          <img :src="obj.PICTURE_ADDRESS" />
-          <div>
-            <Recommend :recommend="recommend"></Recommend>
-          </div>
-          <div>
-            <floor-one :floor1="floor1" :floorName="floorName.floor1" v-if="floorName"></floor-one>
-          </div>
-          <div>
-            <floor-two :floor2="floor2" :floorName="floorName.floor2" v-if="floorName"></floor-two>
-          </div>
-          <div>
-            <floor-three :floor3="floor3" :floorName="floorName.floor3" v-if="floorName"></floor-three>
-          </div>
-          <div>
-            <host-goods :hostGoods="hostGoods"></host-goods>
-          </div>
+      <div class="content" v-if="flag===false">
+        <div>
+          <Rotation :slides="slides"></Rotation>
         </div>
+        <div class="category">
+          <Category :category="category"></Category>
+        </div>
+        <img :src="obj.PICTURE_ADDRESS" />
+        <div>
+          <Recommend :recommend="recommend"></Recommend>
+        </div>
+        <div>
+          <floor-one :floor1="floor1" :floorName="floorName.floor1" v-if="floorName"></floor-one>
+        </div>
+        <div>
+          <floor-two :floor2="floor2" :floorName="floorName.floor2" v-if="floorName"></floor-two>
+        </div>
+        <div>
+          <floor-three :floor3="floor3" :floorName="floorName.floor3" v-if="floorName"></floor-three>
+        </div>
+        <div>
+          <host-goods :hostGoods="hostGoods"></host-goods>
+        </div>
+        <div class="zhanwei1"></div>
+      </div>
+      <div v-else-if="flag===true">
+        <Search v-if="list.length > 0" :list="list" :value="value"></Search>
+        <div class="side"></div>
       </div>
     </van-pull-refresh>
-    <div class="zhanwei1"></div>
   </div>
 </template>
 
@@ -45,7 +64,7 @@ import FloorOne from "../components/home/FloorOne";
 import FloorTwo from "../components/home/FloorTwo";
 import FloorThree from "../components/home/FloorThree";
 import HostGoods from "../components/home/HostGoods";
-import BScroll from "better-scroll";
+import Search from "../components/home/Search";
 
 export default {
   name: "",
@@ -53,6 +72,8 @@ export default {
   data() {
     return {
       isLoading: false,
+      flag: false,
+      value: "",
       obj: {},
       slides: [],
       category: [],
@@ -61,7 +82,8 @@ export default {
       floor1: [],
       floor2: [],
       floor3: [],
-      hostGoods: []
+      hostGoods: [],
+      list: []
     };
   },
   components: {
@@ -72,9 +94,24 @@ export default {
     FloorOne,
     FloorTwo,
     FloorThree,
-    HostGoods
+    HostGoods,
+    Search
   },
   methods: {
+    onFocus() {
+      this.flag = true;
+    },
+    onSearch(value) {
+      this.$api
+        .search(this.value)
+        .then(res => {
+          this.list = res.data.list;
+        })
+        .catch(err => {});
+    },
+    onCancel() {
+      this.flag = false;
+    },
     onRefresh() {
       setTimeout(() => {
         this.isLoading = false;
@@ -94,15 +131,11 @@ export default {
         this.floor2 = res.data.floor2;
         this.floor3 = res.data.floor3;
         this.hostGoods = res.data.hotGoods;
-        this.category = res.data.category
-        localStorage.setItem('category', JSON.stringify(this.category))
+        this.category = res.data.category;
+        localStorage.setItem("category", JSON.stringify(this.category));
         console.log(res);
       })
       .catch(err => {});
-    new BScroll(this.$refs.contents, {
-      scrollY: true,
-      click: true
-    });
   },
   watch: {},
   computed: {}
@@ -110,9 +143,17 @@ export default {
 </script>
 
 <style scoped lang='scss'>
-.tops {
+.top {
   position: fixed;
   z-index: 999;
+  display: flex;
+  width: 100%;
+  background: #f2f2f2;
+}
+.tops {
+  width: 30%;
+  display: flex;
+  align-items: center;
 }
 .zhanwei {
   height: 60px;
@@ -121,11 +162,6 @@ export default {
   background: #f2f2f2;
 }
 .content {
-  // overflow: hidden;
-  // height: 90vh;
-  background: #f2f2f2;
-}
-.item {
   background: #f2f2f2;
 }
 .category {
@@ -137,5 +173,15 @@ img {
 }
 .zhanwei1 {
   height: 50px;
+}
+.backg {
+  background: #f2f2f2;
+}
+.search {
+  width: 70%;
+}
+.side {
+  height: 50px;
+  background: #ffffff;
 }
 </style>

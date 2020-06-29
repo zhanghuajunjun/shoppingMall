@@ -1,22 +1,7 @@
 <template>
-  <div class="top">
-    <div class="local">
-      <div>{{city}}成都市</div>
-      <i class="el-icon-caret-bottom" @click="cityli"></i>
-    </div>
-    <div class="search">
-      <van-search
-        v-model="value"
-        show-action
-        placeholder="请输入搜索关键词"
-        @search="onSearch"
-        class="backg"
-      >
-        <template #action>
-          <div @click="onSearch">搜索</div>
-        </template>
-      </van-search>
-    </div>
+  <div class="local">
+    <div>{{city}}成都市</div>
+    <i class="el-icon-caret-bottom" @click="cityli"></i>
   </div>
 </template>
 
@@ -26,17 +11,13 @@ export default {
   props: {},
   data() {
     return {
-      city: "",
-      value: ""
+      city: ""
     };
   },
   components: {},
   methods: {
-    onSearch(val) {
-      Toast("val");
-    },
     cityli() {
-      this.$router.push('/city')
+      this.$router.push("/city");
     }
   },
   mounted() {
@@ -75,16 +56,6 @@ export default {
   align-items: center;
   padding: 0 20px;
   font-size: 14px;
-}
-.search {
-  padding: 10px 10px 10px -10px;
-}
-.top {
-  display: flex;
-  background: #f2f2f2;
-}
-.backg {
-  background: #f2f2f2;
 }
 .el-icon-caret-bottom {
   margin-left: 10px;

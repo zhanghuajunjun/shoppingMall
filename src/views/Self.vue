@@ -67,6 +67,7 @@ export default {
         .then(() => {
           this.flag = false;
           localStorage.removeItem("username");
+          this.$router.go(0)
         })
         // on cancel
         .catch(() => {});
