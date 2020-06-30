@@ -105,7 +105,11 @@ export default {
       this.$api
         .search(this.value)
         .then(res => {
+          res.data.list.map(item => {
+            this.$set(item,"searchName",item.name);
+          });
           this.list = res.data.list;
+          console.log(this.list);
         })
         .catch(err => {});
     },

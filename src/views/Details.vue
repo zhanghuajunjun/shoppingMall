@@ -119,18 +119,23 @@ export default {
   },
   components: {},
   methods: {
+    // 返回
     goTo() {
       this.$router.go(-1);
     },
+    // 点击立即购买弹框
     buy() {
       this.show = true;
     },
+    // 关闭弹框
     close() {
       this.show = false;
     },
+    // 点击购物车图标进入购物车
     goCart() {
       this.$router.push("/shoppingCart");
     },
+    // 点击收藏
     Collection() {
       if (this.username === null) {
         this.$dialog
@@ -153,6 +158,7 @@ export default {
           .catch(err => {});
       }
     },
+    // 点击取消收藏
     cancelCollection() {
       this.$api
         .cancelCollection(this.id)
@@ -192,7 +198,6 @@ export default {
     },
 
     buyShop() {
-      localStorage.setItem("count", this.value);
       this.$router.push({
         path: "/settlement",
         query: { goodsOne: this.goodsOne, count: this.value, flags: this.flags }

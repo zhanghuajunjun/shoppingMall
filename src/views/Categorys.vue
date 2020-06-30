@@ -74,7 +74,7 @@ export default {
         path: "/details",
         query: { id: item.id }
       });
-      this.$utils.goDetail(this.dataList)
+      this.$utils.goDetail(item)
     }
   },
   mounted() {

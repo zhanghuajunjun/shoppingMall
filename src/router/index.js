@@ -73,6 +73,16 @@ const routes = [
     component: () => import('../views/Collection.vue')
   },
   {
+    path: '/browsing',
+    name: 'Browsing',
+    component: () => import('../views/Browsing.vue')
+  },
+  {
+    path: '/allOrder',
+    name: 'AllOrder',
+    component: () => import('../views/AllOrder.vue')
+  },
+  {
     path: '/settlement',
     name: 'Settlement',
     component: () => import('../views/Settlement.vue')

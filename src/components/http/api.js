@@ -227,7 +227,7 @@ export default {
 
   // 27、订单查询  get
   getMyOrder() {
-    return service.get(`/getMyOrder`)
+    return service.get(`/myOrder`)
   },
 
   // 28、查询已评价  get

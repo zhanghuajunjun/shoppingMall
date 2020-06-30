@@ -16,7 +16,7 @@
                 <span class="shopping-cart-o">
                   <van-icon name="shopping-cart-o" color="#ffffff" @click="addShop(index)" />
                 </span>
-                <span class="details" @click="Details(index)">查看详情</span>
+                <span class="details" @click="goDetail(index)">查看详情</span>
               </div>
             </div>
           </div>
@@ -42,11 +42,12 @@ export default {
   },
   components: {},
   methods: {
-    Details(index) {
+    goDetail(index) {
       this.$router.push({
         path: "/details",
         query: { id: this.recommend[index].goodsId }
       });
+      this.$utils.goDetail(this.recommend[index])
     },
     addShop(index) {
       this.username = localStorage.getItem("username");

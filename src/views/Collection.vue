@@ -1,7 +1,7 @@
 <template>
   <div>
     <van-nav-bar title="我的收藏" left-arrow @click-left="onClickLeft" />
-    <div class="box">
+    <div class="box" v-if="collection.length > 0">
       <div v-for="(item,index) in collection" :key="index">
         <div class="d-flex">
           <img :src="item.image_path" class="img" />
@@ -14,6 +14,10 @@
           </div>
         </div>
       </div>
+    </div>
+    <div v-else class="else">
+      <img src="../../项目资料/可能要用的图片/loading.gif" class="elseimg">
+      <div class="null">你还没有任何收藏的商品</div>
     </div>
   </div>
 </template>
@@ -49,7 +53,6 @@ export default {
   },
   mounted() {
     this.collection = JSON.parse(localStorage.getItem("collect"));
-    console.log(this.collection);
   },
   watch: {},
   computed: {}
@@ -82,5 +85,15 @@ export default {
   margin-top: 10px;
   display: flex;
   justify-content: flex-end;
+}
+.null {
+  font-size: 18px;
+}
+.else {
+  text-align: center;
+  margin-top: 20px;
+}
+.elseimg {
+  width: 50%;
 }
 </style>

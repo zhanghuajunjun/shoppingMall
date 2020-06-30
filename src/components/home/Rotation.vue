@@ -2,7 +2,7 @@
   <div>
     <van-swipe :autoplay="3000">
       <van-swipe-item v-for="(item, index) in slides" :key="index">
-        <img v-lazy="item.image" @click="Details(index)"/>
+        <img v-lazy="item.image" @click="goDetail(index)" />
       </van-swipe-item>
     </van-swipe>
   </div>
@@ -19,16 +19,24 @@ export default {
   },
   data() {
     return {
-      id: ''
+      id: "",
+      goodsOne: {}
     };
   },
   components: {},
   methods: {
-    Details(index) {
+    goDetail(index) {
       this.$router.push({
         path: "/details",
         query: { id: this.slides[index].goodsId }
       });
+      this.$api
+        .goods(this.slides[index].goodsId)
+        .then(res => {
+          this.goodsOne = res.goods.goodsOne
+          this.$utils.goDetail(this.goodsOne);
+        })
+        .catch(err => {});
     }
   },
   mounted() {},

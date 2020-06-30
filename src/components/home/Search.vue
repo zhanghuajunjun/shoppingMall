@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div v-for="(item,index) in list" :key="index">
-      <div class="item" v-html="item.name"></div>
+    <div v-for="(item,index) in list" :key="index" @click="goDetail(index)">
+      <div class="item" v-html="item.searchName"></div>
     </div>
   </div>
 </template>
@@ -24,14 +24,22 @@ export default {
   },
   components: {},
   methods: {
+    goDetail(index) {
+      this.$router.push({
+        path: "/details",
+        query: { id: this.list[index].id }
+      });
+      this.$utils.goDetail(this.list[index]);
+    }
   },
   mounted() {
     this.list.map(item => {
-        let replaceReg = new RegExp(this.value, 'g')
-        let replaceString = '<span class="highlights-text">' + this.value + '</span>' 
-        item.name = item.name.replace(replaceReg, replaceString)
-        console.log(item)
-      })
+      let replaceReg = new RegExp(this.value, "g");
+      let replaceString =
+        '<span class="highlights-text">' + this.value + "</span>";
+      item.searchName = item.searchName.replace(replaceReg, replaceString);
+      console.log(item);
+    });
   },
   watch: {},
   computed: {}

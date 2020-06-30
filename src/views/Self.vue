@@ -16,30 +16,30 @@
     </div>
     <div class="flex-j-sa">
       <div class="f-dir-mid">
-        <van-icon name="paid" size="30" class="icon" badge="6" />
+        <van-icon name="paid" size="30" class="icon" />
         <div>待付款</div>
       </div>
       <div class="f-dir-mid">
-        <van-icon name="free-postage" size="30" class="icon" badge="7" />
+        <van-icon name="free-postage" size="30" class="icon" />
         <div>代发货</div>
       </div>
       <div class="f-dir-mid">
-        <van-icon name="points" size="30" class="icon" badge="8" />
+        <van-icon name="points" size="30" class="icon" />
         <div>待收货</div>
       </div>
       <div class="f-dir-mid">
         <van-icon name="thumb-circle-o" size="30" class="icon" badge="9" />
         <div>评价</div>
       </div>
-      <div class="f-dir-mid">
-        <van-icon name="like-o" size="30" class="icon" badge="99+" />
+      <div class="f-dir-mid" @click="allOrder">
+        <van-icon name="like-o" size="30" class="icon" :badge="this.length" />
         <div>已完成</div>
       </div>
     </div>
-    <van-cell title="全部订单" is-link to="index" class="order" icon="records" />
+    <van-cell title="全部订单" is-link to="allOrder" class="order" icon="records" />
     <van-cell title="收藏商品" is-link to="collection" icon="star-o" class="cell" />
     <van-cell title="地址管理" is-link to="address" icon="location-o" />
-    <van-cell title="最近浏览" is-link to="index" icon="eye-o" class="cell" />
+    <van-cell title="最近浏览" is-link to="browsing" icon="eye-o" class="cell" />
   </div>
 </template>
 
@@ -50,7 +50,9 @@ export default {
   data() {
     return {
       userInfo: {},
-      username: ""
+      username: "",
+      flag: true,
+      length: ''
     };
   },
   components: {},
@@ -67,16 +69,20 @@ export default {
         .then(() => {
           this.flag = false;
           localStorage.removeItem("username");
-          this.$router.go(0)
+          this.$router.go(0);
         })
         // on cancel
         .catch(() => {});
     },
     login() {
       this.$router.push("/login");
+    },
+    allOrder() {
+      this.$router.push({ path: "/allOrder", query: { flag: this.flag } });
     }
   },
   mounted() {
+    this.length = localStorage.getItem("orderlength");
     this.username = localStorage.getItem("username");
     this.$api
       .queryUser()
