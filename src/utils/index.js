@@ -16,14 +16,26 @@ export default {
   },
   Collection(item) {
     // 判断本地有没有收藏的数组
-    if(!localStorage.collect) {
+    if (!localStorage.collect) {
       let ass = []
       ass.push(item)
-      localStorage.setItem('collect',JSON.stringify(ass))
+      localStorage.setItem('collect', JSON.stringify(ass))
     } else {
       let ass = JSON.parse(localStorage.collect)
       ass.push(item)
-      localStorage.setItem('collect',JSON.stringify(ass))
+      localStorage.setItem('collect', JSON.stringify(ass))
+    }
+  },
+  onSearch(item) {
+    // 判断本地有没有收藏的数组
+    if (!localStorage.searchHistroy) {
+      let ass = []
+      ass.push(item)
+      localStorage.setItem('searchHistroy', JSON.stringify(ass))
+    } else {
+      let ass = JSON.parse(localStorage.searchHistroy)
+      ass.push(item)
+      localStorage.setItem('searchHistroy', JSON.stringify(ass))
     }
   }
 }

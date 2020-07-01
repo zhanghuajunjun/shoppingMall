@@ -22,12 +22,12 @@
           <div class="address">收货地址：{{defaultAdd.address}}</div>
           <div class="Inconvenience">(收货不便时，可选择免费待收货服务)</div>
         </div>
-        <van-icon name="arrow" class="location" />
+        <van-icon name="arrow" class="location" @click="arrow" />
       </div>
       <div class="caitiao">
         <img src="../../项目资料/可能要用的图片/caitiao.jpg" width="100%" />
       </div>
-      <div v-if="flag===1">
+      <div v-if="flag==='1'">
         <div v-for="(item,index) in shopList" :key="index" class="d-flex">
           <img :src="item.image_path" class="img" />
           <div class="item">
@@ -42,7 +42,7 @@
           <van-submit-bar :price="this.total*100" button-text="提交订单" @submit="onSubmit" />
         </div>
       </div>
-      <div v-if="flags===0" class="d-flex">
+      <div v-else class="d-flex">
         <img :src="this.goodsOne.image_path" class="img" />
         <div class="item">
           <div class="name">{{this.goodsOne.name}}</div>
@@ -71,8 +71,7 @@ export default {
       count: "",
       goodsOne: {},
       counts: "",
-      flag: 0,
-      flags: 1,
+      flag: "",
       total: ""
     };
   },
@@ -84,8 +83,11 @@ export default {
     onClickLeft() {
       this.$router.go(-1);
     },
+    arrow() {
+      this.$router.push("/address");
+    },
     onSubmit() {
-      if (this.flag === 1) {
+      if (this.flag === "1") {
         this.shopList.map(item => {
           this.arr.push(item.cid);
         });
@@ -102,11 +104,13 @@ export default {
             console.log(res);
             this.$toast.success(res.msg);
             this.$router.push("/");
+            localStorage.removeItem("cartlist");
+            localStorage.removeItem("cartflag");
+            localStorage.removeItem("carttotal");
           })
           .catch(err => {});
-      }
-      if (this.flags === 0) {
-        this.arr.push(this.goodsOne.id)
+      } else {
+        this.arr.push(this.goodsOne.id);
         this.$api
           .order({
             address: this.defaultAdd.address,
@@ -120,18 +124,22 @@ export default {
             console.log(res);
             this.$toast.success(res.msg);
             this.$router.push("/");
+            localStorage.removeItem("detailGoodsOne");
+            localStorage.removeItem("detailcount");
           })
           .catch(err => {});
       }
     }
   },
   mounted() {
-    this.goodsOne = this.$route.query.goodsOne;
-    this.counts = this.$route.query.count;
-    this.shopList = JSON.parse(localStorage.getItem("shopList"));
-    this.flag = this.$route.query.flag;
-    this.flags = this.$route.query.flags;
-    this.total = this.$route.query.total;
+    // 从购物车结算
+    this.shopList = JSON.parse(localStorage.getItem("cartlist"));
+    this.flag = localStorage.getItem("cartflag");
+    this.total = localStorage.getItem("carttotal");
+    // 从详情页结算
+    this.goodsOne = JSON.parse(localStorage.getItem("detailGoodsOne"));
+    this.counts = localStorage.getItem("detailcount");
+    // 查询是否默认地址
     this.$api
       .getDefaultAddress()
       .then(res => {

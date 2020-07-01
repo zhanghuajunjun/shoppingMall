@@ -59,7 +59,7 @@
     <div class="zw"></div>
     <van-goods-action class="index">
       <van-goods-action-icon icon="chat-o" text="客服" />
-      <van-goods-action-icon icon="cart-o" text="购物车" :badge="length" @click="goCart" />
+      <van-goods-action-icon icon="cart-o" text="购物车" :badge="setLength" @click="goCart" />
       <van-goods-action-button type="warning" text="加入购物车" @click="addShops" />
       <van-goods-action-button type="danger" text="立即购买" @click="buy" />
     </van-goods-action>
@@ -153,7 +153,7 @@ export default {
             console.log(res);
             this.$toast.success("收藏成功");
             this.flag = true;
-            this.$utils.Collection(this.goodsOne)
+            this.$utils.Collection(this.goodsOne);
           })
           .catch(err => {});
       }
@@ -196,12 +196,10 @@ export default {
           .catch(err => {});
       }
     },
-
     buyShop() {
-      this.$router.push({
-        path: "/settlement",
-        query: { goodsOne: this.goodsOne, count: this.value, flags: this.flags }
-      });
+      this.$router.push("/settlement");
+      localStorage.setItem("detailGoodsOne", JSON.stringify(this.goodsOne));
+      localStorage.setItem("detailcount", this.value);
     }
   },
   mounted() {
@@ -225,7 +223,11 @@ export default {
       .catch(err => {});
   },
   watch: {},
-  computed: {}
+  computed: {
+    setLength() {
+      return this.$store.state.length;
+    }
+  }
 };
 </script>
 

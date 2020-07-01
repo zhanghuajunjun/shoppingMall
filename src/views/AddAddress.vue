@@ -46,14 +46,8 @@ export default {
         })
         .catch(err => {});
     },
-    onDelete(id) {
-      this.$api
-        .deleteAddress( id )
-        .then(res => {
-          this.$toast("删除成功");
-          this.$router.push("/address");
-        })
-        .catch(err => {});
+    onDelete() {
+      this.$router.push("/address");
     }
   },
   mounted() {},

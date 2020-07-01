@@ -67,3 +67,20 @@
 2020-06-30 08:45:06,685 INFO 15776 [egg-mongoose] instance[0] start successfully
 2020-06-30 08:45:06,689 INFO 15776 [egg-watcher:application] watcher start success
 2020-06-30 08:45:06,711 INFO 15776 [egg:core] dump config after ready, 18ms
+2020-06-30 23:29:25,060 INFO 4820 [egg:logger] init all loggers with options: {"dir":"F:\\项目练习\\shoppingmall\\server\\logs\\server","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"server-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"application"}
+2020-06-30 23:29:25,103 INFO 4820 [egg-multipart] stream mode enable
+2020-06-30 23:29:30,286 INFO 4820 [egg-mongoose] connecting mongodb://127.0.0.1/shoppingMall
+2020-06-30 23:29:33,985 INFO 4820 [egg-static] starting static serve /public/ -> F:\项目练习\shoppingmall\server\app\public
+2020-06-30 23:29:33,992 INFO 4820 [egg-security] use methodnoallow middleware
+2020-06-30 23:29:33,993 INFO 4820 [egg-security] use noopen middleware
+2020-06-30 23:29:33,997 INFO 4820 [egg-security] use nosniff middleware
+2020-06-30 23:29:34,010 INFO 4820 [egg-security] use xssProtection middleware
+2020-06-30 23:29:34,011 INFO 4820 [egg-security] use xframe middleware
+2020-06-30 23:29:34,012 INFO 4820 [egg-security] use dta middleware
+2020-06-30 23:29:34,012 INFO 4820 [egg-security] compose 6 middlewares into one security middleware
+2020-06-30 23:29:34,377 INFO 4820 [egg:core] dump config after load, 7ms
+2020-06-30 23:29:34,383 INFO 4820 [egg-mongoose] starting...
+2020-06-30 23:29:34,587 INFO 4820 [egg-watcher:application] watcher start success
+2020-06-30 23:29:34,643 INFO 4820 [egg-mongoose] mongodb://127.0.0.1/shoppingMall connected successfully
+2020-06-30 23:29:34,651 INFO 4820 [egg-mongoose] instance[0] start successfully
+2020-06-30 23:29:34,666 INFO 4820 [egg:core] dump config after ready, 13ms

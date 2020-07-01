@@ -8,17 +8,21 @@ export default new Vuex.Store({
     categorys: [],
     citya: '',
     userInfos: {},
+    length: ''
   },
   mutations: {
-    setCategorys(state,data) {
+    setCategorys(state, data) {
       state.categorys = data
     },
-    setCitya(state,data) {
+    setCitya(state, data) {
       state.citya = data
     },
-    setUserInfos(state,data) {
+    setUserInfos(state, data) {
       state.userInfos = data
     },
+    setLength(state, data) {
+      state.length = data
+    }, 
   },
   actions: {
   },

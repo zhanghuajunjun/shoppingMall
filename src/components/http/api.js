@@ -12,7 +12,7 @@ export default {
   // 2、搜索  post
   search(value) {
     // 参数: value: 搜索关键词
-    return service.post(`/search`,{value})
+    return service.post(`/search`, { value })
   },
 
   // 3、分类查询  get 
@@ -77,13 +77,13 @@ export default {
   // 10、取消收藏  post
   cancelCollection(id) {
     // id:商品的cid
-    return service.post(`/cancelCollection`, {id})
+    return service.post(`/cancelCollection`, { id })
   },
 
   // 11、查询商品是否已收藏  post
   isCollection(id) {
     // id:商品的id
-    return service.post(`/isCollection`, {id})
+    return service.post(`/isCollection`, { id })
   },
 
   // 12、加入购物车 post
@@ -94,12 +94,12 @@ export default {
 
   // 13、退出登录  post
   loginOut() {
-    return service.post(`/loginOut`,{})
+    return service.post(`/loginOut`, {})
   },
 
   // 14、获取用户信息 post
   queryUser() {
-    return service.post(`/queryUser`,{})
+    return service.post(`/queryUser`, {})
   },
 
   // 15、修改保存用户信息  post
@@ -202,8 +202,8 @@ export default {
   },
 
   // 25、注册  post
-  register({nickname,password,verify}) {
-    return service.post(`/register`,{
+  register({ nickname, password, verify }) {
+    return service.post(`/register`, {
       // 用户名
       nickname,
       // 密码
@@ -214,8 +214,8 @@ export default {
   },
 
   // 26、登录  post
-  login({nickname,password,verify}) {
-    return service.post(`/login`,{
+  login({ nickname, password, verify }) {
+    return service.post(`/login`, {
       // 用户名
       nickname,
       // 密码
@@ -241,8 +241,8 @@ export default {
   },
 
   // 30、查询单条评论  post
-  evaluateOne({id,_id}) {
-    return service.post(`/evaluateOne`,{
+  evaluateOne({ id, _id }) {
+    return service.post(`/evaluateOne`, {
       // 商品的id
       id,
       // 数据库的那条id

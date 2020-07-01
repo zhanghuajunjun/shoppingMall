@@ -45,6 +45,13 @@ export default {
         })
         .then(res => {
           this.$router.push("/address");
+          this.$api
+            .deleteAddress({ id: this.addressInfo })
+            .then(res => {
+              this.$toast("修改成功");
+              this.$router.push("/address");
+            })
+            .catch(err => {});
         })
         .catch(err => {});
     },
@@ -52,7 +59,7 @@ export default {
       this.$api
         .deleteAddress({ id })
         .then(res => {
-          this.$toast('删除成功');
+          this.$toast("删除成功");
           this.$router.push("/address");
         })
         .catch(err => {});

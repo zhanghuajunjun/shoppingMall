@@ -10,7 +10,6 @@
           show-action
           placeholder="请输入搜索关键词"
           @focus="onFocus"
-          @search="onSearch"
           class="backg"
         >
           <template #action>
@@ -47,8 +46,24 @@
         </div>
         <div class="zhanwei1"></div>
       </div>
-      <div v-else-if="flag===true">
-        <Search v-if="list.length > 0" :list="list" :value="value"></Search>
+      <div v-else-if="flag===true" class="elseIf">
+        <div v-if="value === ''">
+          <div v-if="this.SearchHistroy === null" class="unhistroy">暂无历史搜索记录</div>
+          <div v-else>
+            <div class="history">
+              <div>历史记录</div>
+              <van-icon name="delete" @click="delAll" />
+            </div>
+            <div class="d-flex f-f-warp">
+              <div v-for="(item,index) in SearchHistroy" :key="index" @click="searchAgain(item)">
+                <div class="SearchHis">
+                  <van-tag closeable size="large" plain @close="close(index)">{{item}}</van-tag>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <Search v-else :list="list" :value="value"></Search>
         <div class="side"></div>
       </div>
     </van-pull-refresh>
@@ -83,7 +98,8 @@ export default {
       floor2: [],
       floor3: [],
       hostGoods: [],
-      list: []
+      list: [],
+      SearchHistroy: []
     };
   },
   components: {
@@ -101,29 +117,53 @@ export default {
     onFocus() {
       this.flag = true;
     },
-    onSearch(value) {
+    onSearch() {
       this.$api
         .search(this.value)
         .then(res => {
           res.data.list.map(item => {
-            this.$set(item,"searchName",item.name);
+            this.$set(item, "searchName", item.name);
           });
           this.list = res.data.list;
+          this.list.map(item => {
+            let replaceReg = new RegExp(this.value, "g");
+            let replaceString =
+              '<span class="highlights-text">' + this.value + "</span>";
+            item.searchName = item.searchName.replace(
+              replaceReg,
+              replaceString
+            );
+            console.log(item);
+          });
           console.log(this.list);
         })
         .catch(err => {});
     },
     onCancel() {
       this.flag = false;
+      this.value = "";
     },
     onRefresh() {
       setTimeout(() => {
         this.isLoading = false;
         this.count++;
       }, 1000);
+    },
+    delAll() {
+      this.SearchHistroy = [];
+      localStorage.setItem("searchHistroy", JSON.stringify(this.SearchHistroy));
+    },
+    searchAgain(item) {
+      this.value = item;
+    },
+    close(index) {
+      this.SearchHistroy.splice(index, 1);
+      localStorage.setItem("searchHistroy", JSON.stringify(this.SearchHistroy));
     }
   },
   mounted() {
+    this.onSearch();
+    this.SearchHistroy = JSON.parse(localStorage.getItem("searchHistroy"));
     this.$api
       .recommend()
       .then(res => {
@@ -137,11 +177,16 @@ export default {
         this.hostGoods = res.data.hotGoods;
         this.category = res.data.category;
         localStorage.setItem("category", JSON.stringify(this.category));
-        console.log(res);
       })
       .catch(err => {});
   },
-  watch: {},
+  watch: {
+    value(val, oldVal) {
+      if (this.value === val) {
+        this.onSearch();
+      }
+    }
+  },
   computed: {}
 };
 </script>
@@ -187,5 +232,29 @@ img {
 .side {
   height: 50px;
   background: #ffffff;
+}
+.elseIf {
+  background: #ffffff;
+}
+.unhistroy {
+  background: #ffffff;
+  text-align: center;
+  padding: 30px 0;
+}
+.history {
+  background: #ffffff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #eeeeee;
+}
+.err {
+  padding: 20px 10px;
+  text-align: center;
+  background: #ffffff;
+}
+.SearchHis {
+  background: #ffffff;
+  padding: 10px;
 }
 </style>

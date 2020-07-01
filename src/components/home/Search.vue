@@ -1,7 +1,13 @@
 <template>
   <div>
-    <div v-for="(item,index) in list" :key="index" @click="goDetail(index)">
-      <div class="item" v-html="item.searchName"></div>
+    <!-- 如果搜索出来没有商品 提示没有商品 -->
+    <div v-if="list.length < 1 || value === ''">
+      <van-cell>非常抱歉，该商品不存在，请重新输入关键词</van-cell>
+    </div>
+    <div v-else>
+      <div v-for="(item,index) in list" :key="index" @click="goDetail(index)">
+        <div class="item" v-html="item.searchName"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -30,17 +36,10 @@ export default {
         query: { id: this.list[index].id }
       });
       this.$utils.goDetail(this.list[index]);
+      this.$utils.onSearch(this.value);
     }
   },
-  mounted() {
-    this.list.map(item => {
-      let replaceReg = new RegExp(this.value, "g");
-      let replaceString =
-        '<span class="highlights-text">' + this.value + "</span>";
-      item.searchName = item.searchName.replace(replaceReg, replaceString);
-      console.log(item);
-    });
-  },
+  mounted() {},
   watch: {},
   computed: {}
 };

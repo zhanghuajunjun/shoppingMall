@@ -71,8 +71,6 @@ export default {
       .getMyOrder()
       .then(res => {
         this.list = res.list;
-        this.length = this.list.length;
-        localStorage.setItem('orderlength',this.length)
       })
       .catch(err => {});
   },

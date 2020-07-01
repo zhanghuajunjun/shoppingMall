@@ -3,9 +3,8 @@
     <van-nav-bar title="地址列表" left-text left-arrow @click-left="onClickLeft" class="nav-bar" />
     <div v-if="list.length <= 0">
       <div class="null">暂无收货地址~~</div>
-      <van-address-list @add="onAdd"/>
+      <van-address-list @add="onAdd" />
     </div>
-
     <div v-else>
       <van-address-list
         v-model="chosenAddressId"
@@ -35,7 +34,10 @@ export default {
       this.$router.go(-1);
     },
     onEdit(item) {
-      this.$router.push({name:'EidtAddress',query:{obj: JSON.stringify(item)}})
+      this.$router.push({
+        name: "EidtAddress",
+        query: { obj: JSON.stringify(item) }
+      });
     },
     onAdd() {
       this.$router.push("/addaddress");
@@ -46,9 +48,12 @@ export default {
       .getAddress()
       .then(res => {
         res.address.map((item, index) => {
-          this.$set(item,'id',(index+1).toString())
-        })
+          this.$set(item, "id", (index + 1).toString());
+        });
         this.list = res.address;
+        this.chosenAddressId = this.list.filter(item => {
+          return item.isDefault === true;
+        })[0].id;
         console.log(this.list);
       })
       .catch(err => {});

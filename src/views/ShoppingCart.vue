@@ -81,7 +81,7 @@ export default {
         .getCard()
         .then(res => {
           this.shopList = res.shopList;
-          localStorage.setItem("length", this.shopList.length);
+          this.$store.commit('setLength',this.shopList.length)
         })
         .catch(err => {});
     },
@@ -148,11 +148,10 @@ export default {
         return item.check === true;
       });
       if (this.ass.length > 0) {
-        this.$router.push({
-          path: "/settlement",
-          query: { flag: this.flag, total: this.total }
-        });
-        localStorage.setItem("shopList", JSON.stringify(this.ass));
+        this.$router.push("/settlement");
+        localStorage.setItem("cartlist", JSON.stringify(this.ass));
+        localStorage.setItem("cartflag", this.flag);
+        localStorage.setItem("carttotal", this.total);
       } else {
         this.$toast.fail("没有要结算的商品");
       }
@@ -174,13 +173,16 @@ export default {
         }
       });
       return sum;
+    },
+    setLength () {
+      return this.$store.state .length
     }
   },
   filters: {
     fixed(val) {
       return "￥" + Number(val).toFixed(2);
     }
-  }
+  },
 };
 </script>
 

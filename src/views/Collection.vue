@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import uniqWith from 'lodash/uniqWith';
+import isEqual from 'lodash/uniqWith';
 export default {
   name: "",
   props: {},
@@ -53,6 +55,7 @@ export default {
   },
   mounted() {
     this.collection = JSON.parse(localStorage.getItem("collect"));
+    this.collection = uniqWith(this.collection,isEqual)
   },
   watch: {},
   computed: {}

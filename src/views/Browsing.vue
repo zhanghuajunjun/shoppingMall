@@ -62,16 +62,6 @@ export default {
   },
   mounted() {
     this.browsing = JSON.parse(localStorage.getItem("views"));
-    console.log(this.browsing);
-    // this.arr1 = this.browsing.filter(item => {
-    //   return item.name === null;
-    // });
-    // this.arr2 = this.arr1.filter(item => {
-    //   return item.goodsName === null;
-    // });
-    // this.arr2.map(item => {
-    //   this.
-    // });
   },
   watch: {},
   computed: {}

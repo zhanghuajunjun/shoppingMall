@@ -4,13 +4,13 @@
     <div class="info">
       <van-icon name="setting" class="setting" color="#ffffff" size="25" @click="save" />
       <div class="avatar">
-        <img :src="userInfo.avatar" />
+        <img :src="this.avatar" />
       </div>
       <div v-if="this.username === null">
         <div class="out" @click="login">登录/注册</div>
       </div>
       <div v-else>
-        <div class="wel">欢迎您：{{userInfo.nickname}}</div>
+        <div class="wel">欢迎您：{{this.username}}</div>
         <div class="out" @click="out">退出登录</div>
       </div>
     </div>
@@ -52,7 +52,8 @@ export default {
       userInfo: {},
       username: "",
       flag: true,
-      length: ''
+      length: "",
+      avatar: ''
     };
   },
   components: {},
@@ -82,13 +83,21 @@ export default {
     }
   },
   mounted() {
-    this.length = localStorage.getItem("orderlength");
-    this.username = localStorage.getItem("username");
     this.$api
       .queryUser()
       .then(res => {
         this.userInfo = res.userInfo;
+        localStorage.setItem("avatar", res.userInfo.avatar);
+        console.log(this.userInfo);
         this.$store.commit("setUserInfos", res.userInfo);
+      })
+      .catch(err => {});
+    this.username = localStorage.getItem("username");
+    this.avatar = localStorage.getItem("avatar");
+    this.$api
+      .orderNum()
+      .then(res => {
+        this.length = res.numList[3];
       })
       .catch(err => {});
   },
