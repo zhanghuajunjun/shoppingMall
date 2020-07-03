@@ -82,14 +82,10 @@ export default {
     this.bxMallSubDto = this.category[0].bxMallSubDto;
     if (this.$route.query.index) {
       this.activeKey = this.$route.query.index;
-      this.ids = this.category[this.activeKey].bxMallSubDto[
-        this.active
-      ].mallSubId;
+      this.ids = this.category[this.activeKey].bxMallSubDto[this.active].mallSubId;
       this.getData();
     } else {
-      this.ids = this.category[this.activeKey].bxMallSubDto[
-        this.active
-      ].mallSubId;
+      this.ids = this.category[this.activeKey].bxMallSubDto[this.active].mallSubId;
       this.getData();
     }
   },

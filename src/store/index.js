@@ -6,7 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     categorys: [],
-    citya: '',
+    citya: localStorage.city || '',
     userInfos: {},
     length: ''
   },

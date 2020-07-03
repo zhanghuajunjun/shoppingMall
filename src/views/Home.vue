@@ -133,9 +133,7 @@ export default {
               replaceReg,
               replaceString
             );
-            console.log(item);
           });
-          console.log(this.list);
         })
         .catch(err => {});
     },

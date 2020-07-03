@@ -104,7 +104,7 @@ export default {
               console.log(res);
               if (res.code === 200) {
                 this.$toast(res.msg);
-                localStorage.setItem("user", res.user);
+                this.$router.push('/self')
               } else {
                 this.$toast.fail(res.msg);
               }

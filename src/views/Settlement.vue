@@ -5,7 +5,7 @@
       <div>您还没有设置默认收货地址，</div>
       <div>
         请设置
-        <span class="default" @click="setDefa">默收货地址</span>
+        <span class="default" @click="setDefa">收货地址</span>
       </div>
       <div class="caitiao">
         <img src="../../项目资料/可能要用的图片/caitiao.jpg" width="100%" />
@@ -16,10 +16,10 @@
         <van-icon name="location-o" class="location" />
         <div class="all">
           <div class="flex-j-sb">
-            <span>收货人：{{defaultAdd.name}}</span>
-            <span>{{defaultAdd.tel}}</span>
+            <span>收货人：{{choseAddress.name}}</span>
+            <span>{{choseAddress.tel}}</span>
           </div>
-          <div class="address">收货地址：{{defaultAdd.address}}</div>
+          <div class="address">收货地址：{{choseAddress.address}}</div>
           <div class="Inconvenience">(收货不便时，可选择免费待收货服务)</div>
         </div>
         <van-icon name="arrow" class="location" @click="arrow" />
@@ -72,7 +72,9 @@ export default {
       goodsOne: {},
       counts: "",
       flag: "",
-      total: ""
+      total: "",
+      addressflag: '',
+      choseAddress: {}
     };
   },
   components: {},
@@ -140,12 +142,18 @@ export default {
     this.goodsOne = JSON.parse(localStorage.getItem("detailGoodsOne"));
     this.counts = localStorage.getItem("detailcount");
     // 查询是否默认地址
-    this.$api
+    this.addressflag = this.$route.query.flag;
+    if (this.addressflag === true) {
+      this.choseAddress = this.$route.query.chosenAddress;
+    } else {
+      this.$api
       .getDefaultAddress()
       .then(res => {
-        this.defaultAdd = res.defaultAdd;
+        this.choseAddress = res.defaultAdd;
       })
       .catch(err => {});
+    }
+    
   },
   watch: {},
   computed: {

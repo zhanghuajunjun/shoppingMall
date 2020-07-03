@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Layout from '../views/Layout.vue'
+import { Dialog } from 'vant';
 
 Vue.use(VueRouter)
 
@@ -83,6 +84,16 @@ const routes = [
     component: () => import('../views/AllOrder.vue')
   },
   {
+    path: '/detailEva',
+    name: 'DetailEva',
+    component: () => import('../views/DetailEva.vue')
+  },
+  {
+    path: '/evaluate',
+    name: 'Evaluate',
+    component: () => import('../views/Evaluate.vue')
+  },
+  {
     path: '/settlement',
     name: 'Settlement',
     component: () => import('../views/Settlement.vue')
@@ -104,5 +115,29 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+router.beforeEach((to, from, next) => {
+  if (to.meta.title) {
+    document.title = to.meta.title;
+  }
+  let arr = ['Self', 'Home', 'Categorys', 'ShoppingCart', 'Details', 'City', 'Login']
+  if (!localStorage.getItem('username')) {
+    if (arr.includes(to.name)) {
+      next()
+    } else {
+      Dialog
+        .alert({
+          title: "登录后才可启用此功能", //加上标题
+          message: "是否跳转登录/注册界面",
+          showCancelButton: true
+        })
+        .then(() => {
+          next('/login')
+        })
+        .catch(() => {
 
+        });
+    }
+
+  } else next()
+})
 export default router

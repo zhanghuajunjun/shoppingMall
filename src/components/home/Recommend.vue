@@ -1,28 +1,24 @@
 <template>
-  <div class="content">
-    <div class="recommend">
-      <div class="commodity">商品推荐</div>
-      <van-swipe :width="125" :loop="false" :show-indicators="false">
-        <van-swipe-item v-for="(item,index) in recommend" :key="index">
-          <div class="img">
-            <img :src="item.image" />
-            <div class="goodsname">{{item.goodsName}}</div>
-            <div>
-              <span>￥{{item.price}}</span>
-              <span class="mall">￥{{item.mallPrice}}</span>
-            </div>
-            <div class="cart">
-              <div class="check">
-                <span class="shopping-cart-o">
-                  <van-icon name="shopping-cart-o" color="#ffffff" @click="addShop(index)" />
-                </span>
-                <span class="details" @click="goDetail(index)">查看详情</span>
-              </div>
-            </div>
+  <div>
+    <div class="commodity">商品推荐</div>
+    <van-swipe :width="135" :loop="false" :show-indicators="false">
+      <van-swipe-item v-for="(item,index) in recommend" :key="index">
+        <div class="img">
+          <img :src="item.image" />
+          <div class="goodsname">{{item.goodsName}}</div>
+          <div>
+            <span>￥{{item.price}}</span>
+            <span class="mall">￥{{item.mallPrice}}</span>
           </div>
-        </van-swipe-item>
-      </van-swipe>
-    </div>
+          <div class="cart">
+            <div class="shopping-cart-o">
+              <van-icon name="shopping-cart-o" @click="addShop(index)" />
+            </div>
+            <div class="details" @click="goDetail(index)">查看详情</div>
+          </div>
+        </div>
+      </van-swipe-item>
+    </van-swipe>
   </div>
 </template>
 
@@ -37,7 +33,7 @@ export default {
   },
   data() {
     return {
-      username: ''
+      username: ""
     };
   },
   components: {},
@@ -47,7 +43,7 @@ export default {
         path: "/details",
         query: { id: this.recommend[index].goodsId }
       });
-      this.$utils.goDetail(this.recommend[index])
+      this.$utils.goDetail(this.recommend[index]);
     },
     addShop(index) {
       this.username = localStorage.getItem("username");
@@ -109,7 +105,8 @@ img {
   margin-left: 10px;
 }
 .cart {
-  padding: 10px 10px 10px 0;
+  display: flex;
+ margin: 10px 0 10px 10px;
 }
 .shopping-cart-o {
   background: #feca3a;
@@ -117,8 +114,6 @@ img {
   border-radius: 5px 0 0 5px;
 }
 .details {
-  font-weight: 600px;
-  color: #ffffff;
   background: #ff4c38;
   padding: 5px;
   border-radius: 0 5px 5px 0;

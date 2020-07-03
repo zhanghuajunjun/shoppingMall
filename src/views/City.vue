@@ -3,27 +3,60 @@
     <div class="top">
       <van-nav-bar title="城市列表" left-text="返回" right-text left-arrow @click-left="onClickLeft" />
     </div>
-    <div class="ipt">
-      <van-search v-model="value" placeholder="请输入搜索关键词" />
-    </div>
-    <div class="text">当前城市</div>
-    <div class="box">
-      <div class="box1"></div>
-      <div class="dv">{{citya}}</div>
-    </div>
-    <div class="text">热门城市</div>
-    <div class="Text">
-      <div class="Text1">
-        <div class="grid" v-for="(item,index) in arr" :key="index">{{item.name}}</div>
+
+    <van-search v-model="cityName" show-action placeholder="请输入城市名" @focus="flag=false">
+      <template #action>
+        <div v-if="flag===false" @click="onCancel">取消</div>
+      </template>
+    </van-search>
+    <div v-if="flag || cityName===null">
+      <div class="text">当前城市</div>
+      <div class="box">
+        <div class="box1"></div>
+        <div v-if="CityName===null || CityName===''">
+          <div class="dv">{{this.citya}}</div>
+        </div>
+        <div v-else>
+          <div class="dv">{{this.CityName}}</div>
+        </div>
+      </div>
+      <div class="text">热门城市</div>
+      <div class="Text">
+        <div class="Text1">
+          <div
+            class="grid"
+            v-for="(item,index) in arr"
+            :key="index"
+            @click="changeCity(item.name)"
+          >{{item.name}}</div>
+        </div>
+      </div>
+      <div class="foot">
+        <van-index-bar class="indexBar" :sticky="false" highlight-color="#AE853A">
+          <div v-for="(item,index) in msg" :key="index">
+            <van-index-anchor :index="item" :key="index" />
+            <van-cell
+              v-for="items in datas[item]"
+              :key="items.id"
+              :title="items.name"
+              @click="changeCity(items.name)"
+            />
+          </div>
+        </van-index-bar>
       </div>
     </div>
-    <div class="foot">
-      <van-index-bar class="indexBar" :sticky="false" highlight-color="#AE853A">
-        <div v-for="(item,index) in msg" :key="index">
-          <van-index-anchor :index="item" :key="index" />
-          <van-cell v-for="items in datas[item]" :key="items.id" :title="items.name" />
-        </div>
-      </van-index-bar>
+    <div v-else>
+      <div v-if="this.cityList.length==0">
+        <div class="woring">您输入的地址有误，请重新输入</div>
+      </div>
+      <div v-else>
+        <van-cell
+          v-for="item in cityList"
+          :key="item.id"
+          :title="item.name"
+          @click="changeCity(item.name)"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -36,25 +69,54 @@ export default {
   components: {},
   data() {
     return {
-      value: "",
+      cityName: "",
+      CityName: "",
       arr: [],
       city: city,
       msg: [],
-      datas: []
+      datas: {},
+      flag: true,
+      cityList: [],
     };
   },
   methods: {
     onClickLeft() {
       this.$router.go(-1);
+    },
+    onCancel() {
+      this.flag = true;
+      this.cityName = "";
+    },
+    changeCity(name) {
+      localStorage.setItem("cityName", name);
+      this.$router.push("/");
     }
   },
   mounted() {
+    this.CityName = localStorage.getItem("cityName");
     this.datas = this.city.data.cities;
     this.arr = this.city.data.hotCities;
     let keys = Object.keys(this.city.data.cities);
     this.msg = keys;
   },
-  watch: {},
+  watch: {
+    cityName(val) {
+      // 将全部城市push在一个数组里面
+      let array = [];
+      for (let i in this.datas) {
+        array.push(this.datas[i]);
+      }
+      let cityLists = [];
+      array.map(item => {
+        item.map(item1 => {
+          cityLists.push(item1);
+        });
+      });
+      this.cityList = cityLists.filter(item => {
+        return JSON.stringify(item).includes(val);
+      });
+    }
+  },
   computed: {
     citya() {
       return this.$store.state.citya;
@@ -65,7 +127,6 @@ export default {
 
 <style scoped lang='scss'>
 .text {
-
   height: 50px;
   display: flex;
   align-items: center;
@@ -122,5 +183,12 @@ export default {
 }
 .van-nav-bar {
   justify-content: center;
+}
+.ipt {
+  display: flex;
+}
+.woring {
+  padding: 20px;
+  text-align: center;
 }
 </style>

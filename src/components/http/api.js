@@ -128,7 +128,7 @@ export default {
 
   // 17、商品评论  post
   goodsOne({ id, rate, content, anonymous, _id, order_id, image }) {
-    return service.post(`/saveUser`, {
+    return service.post(`/goodsOne/comment`, {
       // 商品cid
       id,
       // 分数

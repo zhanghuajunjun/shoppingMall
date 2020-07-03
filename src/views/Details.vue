@@ -53,7 +53,36 @@
         <van-tab title="商品详情">
           <div v-html="goodsOne.detail"></div>
         </van-tab>
-        <van-tab title="商品评价"></van-tab>
+        <van-tab title="商品评价">
+          <div class="marlt" v-for="(item,index) in ass" :key="index" >
+            <div class="flex-j-sb marg-les flex-a-c">
+              <div class="d-flex">
+                <div v-if="item.anonymous===false">
+                  <img :src="avatar" alt class="titles" />
+                </div>
+                <div v-else>
+                  <img :src="item.comment_avatar" alt class="titles" />
+                </div>
+                <div>
+                  <div class="marg-les">{{item.comment_nickname || username}}:</div>
+                  <van-rate
+                    class="titles2"
+                    v-model="item.rate"
+                    void-icon="star"
+                    :size="16"
+                    color="#ee0a24"
+                    void-color="#eee"
+                  />
+                </div>
+              </div>
+              <div class="titles1">{{item.comment_time}}</div>
+            </div>
+            <div class="padd-lrs">
+              评价内容：
+            </div>
+            <div class="paddten">{{item.content}}</div>
+          </div>
+        </van-tab>
       </van-tabs>
     </div>
     <div class="zw"></div>
@@ -114,7 +143,9 @@ export default {
       isCollection: "",
       id: "",
       flag: false,
-      flags: 0
+      flags: 0,
+      ass: [],
+      avatar: ""
     };
   },
   components: {},
@@ -153,7 +184,7 @@ export default {
             console.log(res);
             this.$toast.success("收藏成功");
             this.flag = true;
-            this.$utils.Collection(this.goodsOne);
+            // this.$utils.Collection(this.goodsOne);
           })
           .catch(err => {});
       }
@@ -203,6 +234,7 @@ export default {
     }
   },
   mounted() {
+    this.avatar = localStorage.getItem("avatar");
     this.username = localStorage.getItem("username");
     this.length = localStorage.getItem("length");
     this.goodsId = this.$route.query.id;
@@ -213,6 +245,7 @@ export default {
         this.goods = res.goods;
         this.goodsOne = res.goods.goodsOne;
         this.id = res.goods.goodsOne.id;
+        this.ass = res.goods.comment;
       })
       .catch(err => {});
     this.$api
@@ -361,5 +394,26 @@ img {
 }
 .cancel {
   color: red;
+}
+.titles {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.titles1 {
+  font-size: 15px;
+}
+.titles2 {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+.titles3 {
+  width: 100%;
+  height: 1px;
+  background: #ccc7c7;
+  margin-top: 10px;
+}
+.marlt {
+  border-bottom: 1px solid #eeeeee;
 }
 </style>

@@ -4,7 +4,12 @@
     <div class="info">
       <van-icon name="setting" class="setting" color="#ffffff" size="25" @click="save" />
       <div class="avatar">
-        <img :src="this.avatar" />
+        <div v-if="this.avatar===null">
+          <img :src="this.userInfo.avatar" />
+        </div>
+        <div v-else>
+          <img :src="this.avatar" />
+        </div>
       </div>
       <div v-if="this.username === null">
         <div class="out" @click="login">登录/注册</div>
@@ -27,8 +32,8 @@
         <van-icon name="points" size="30" class="icon" />
         <div>待收货</div>
       </div>
-      <div class="f-dir-mid">
-        <van-icon name="thumb-circle-o" size="30" class="icon" badge="9" />
+      <div class="f-dir-mid" @click="Evaluate">
+        <van-icon name="thumb-circle-o" size="30" class="icon" />
         <div>评价</div>
       </div>
       <div class="f-dir-mid" @click="allOrder">
@@ -53,7 +58,7 @@ export default {
       username: "",
       flag: true,
       length: "",
-      avatar: ''
+      avatar: ""
     };
   },
   components: {},
@@ -70,6 +75,7 @@ export default {
         .then(() => {
           this.flag = false;
           localStorage.removeItem("username");
+          localStorage.removeItem("avatar");
           this.$router.go(0);
         })
         // on cancel
@@ -80,6 +86,9 @@ export default {
     },
     allOrder() {
       this.$router.push({ path: "/allOrder", query: { flag: this.flag } });
+    },
+    Evaluate() {
+      this.$router.push("/evaluate");
     }
   },
   mounted() {
@@ -87,7 +96,6 @@ export default {
       .queryUser()
       .then(res => {
         this.userInfo = res.userInfo;
-        localStorage.setItem("avatar", res.userInfo.avatar);
         console.log(this.userInfo);
         this.$store.commit("setUserInfos", res.userInfo);
       })

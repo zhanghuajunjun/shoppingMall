@@ -6,25 +6,27 @@
         <div class="d-flex">
           <img :src="item.image_path" class="img" />
           <div class="item">
-            <div>{{item.name}}</div>
-            <div class="price">￥{{item.present_price}}</div>
+            <div @click="goDetail(item)">
+              <div>{{item.name}}</div>
+              <div class="price">￥{{item.present_price}}</div>
+            </div>
             <div class="close">
-              <van-icon name="close" @click="close(index)" />
+              <van-icon name="close" @click="delet(item)" />
             </div>
           </div>
         </div>
       </div>
     </div>
     <div v-else class="else">
-      <img src="../../项目资料/可能要用的图片/loading.gif" class="elseimg">
+      <img src="../../项目资料/可能要用的图片/loading.gif" class="elseimg" />
       <div class="null">你还没有任何收藏的商品</div>
     </div>
   </div>
 </template>
 
 <script>
-import uniqWith from 'lodash/uniqWith';
-import isEqual from 'lodash/uniqWith';
+import uniqWith from "lodash/uniqWith";
+import isEqual from "lodash/uniqWith";
 export default {
   name: "",
   props: {},
@@ -40,22 +42,38 @@ export default {
     onClickLeft() {
       this.$router.go(-1);
     },
-    close(index) {
-      this.$dialog
-        .confirm({
-          title: "确认删除该条收藏"
+    //查询我的收藏
+    getData() {
+      this.$api
+        .collectionList()
+        .then(res => {
+          this.collection = res.data.list;
+          console.log(this.collection);
         })
-        .then(() => {
-          this.collection = JSON.parse(localStorage.getItem("collect"));
-          this.collection.splice(index, 1);
-          localStorage.setItem("collect", JSON.stringify(this.collection));
+        .catch(err => {});
+    },
+    // 删除
+    delet(item) {
+      this.$api
+        .cancelCollection(item.cid)
+        .then(res => {
+          if (res.code === 200) {
+            this.getData();
+            this.$toast.success(res.msg);
+          }
         })
-        .catch(() => {});
+        .catch(err => {});
+    },
+    goDetail(item) {
+      this.$router.push({
+        path: "/details",
+        query: { id: item.cid }
+      });
+      this.$utils.goDetail(item);
     }
   },
   mounted() {
-    this.collection = JSON.parse(localStorage.getItem("collect"));
-    this.collection = uniqWith(this.collection,isEqual)
+    this.getData();
   },
   watch: {},
   computed: {}

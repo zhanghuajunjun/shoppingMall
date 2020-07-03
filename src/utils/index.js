@@ -14,20 +14,8 @@ export default {
       localStorage.setItem('views', JSON.stringify(arr))
     }
   },
-  Collection(item) {
-    // 判断本地有没有收藏的数组
-    if (!localStorage.collect) {
-      let ass = []
-      ass.push(item)
-      localStorage.setItem('collect', JSON.stringify(ass))
-    } else {
-      let ass = JSON.parse(localStorage.collect)
-      ass.push(item)
-      localStorage.setItem('collect', JSON.stringify(ass))
-    }
-  },
   onSearch(item) {
-    // 判断本地有没有收藏的数组
+    // 判断本地有没有历史搜索的数组
     if (!localStorage.searchHistroy) {
       let ass = []
       ass.push(item)

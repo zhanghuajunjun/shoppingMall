@@ -1,12 +1,14 @@
 <template>
   <div class="dv">
     <div class="onefloor">
-      <span>1F</span>
+      <div class="item">1F</div>
       {{floorName}}
     </div>
-    <div v-for="(item,index) in floor1" :key="index">
-      <div :class="[{'left':(index <= 0)},{'right':(index >= 1)}]">
-        <img :src="item.image" @click="goDetail(index)" />
+    <div>
+      <div v-for="(item,index) in floor1" :key="index">
+        <div :class="[{'left':(index <= 0)},{'right':(index >= 1)}]" class="imgs">
+          <img :src="item.image" @click="goDetail(index)" />
+        </div>
       </div>
     </div>
   </div>
@@ -54,12 +56,16 @@ export default {
 
 <style scoped lang='scss'>
 .onefloor {
-  width: 100%;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 20px 0;
   color: red;
 }
-span {
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: red;
   width: 16px;
   height: 16px;
@@ -68,19 +74,25 @@ span {
   color: #fff;
 }
 .dv {
-  height: 350px;
+  display: flex;
+  flex-direction: column;
 }
 img {
   width: 100%;
+  background: #fff;
+  height: 100%;
 }
 .left {
   float: left;
   width: 50%;
-  margin-bottom: -4px;
+
 }
 .right {
   float: right;
   width: 50%;
+ 
+}
+.imgs {
   display: flex;
 }
 </style>

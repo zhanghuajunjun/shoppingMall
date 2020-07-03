@@ -1,7 +1,7 @@
 <template>
   <div>
     <van-nav-bar title="最近浏览" left-arrow @click-left="onClickLeft" />
-    <div v-if="this.browsing===null" class="else">
+    <div v-if="this.browsing===null || this.browsing.length===0" class="else">
       <img src="../../项目资料/可能要用的图片/loading.gif" class="elseimg" />
       <div class="null">你还没有浏览过任何商品</div>
       <div @click="browse" class="browse">快去看看吧</div>
@@ -11,15 +11,20 @@
         <div class="d-flex">
           <img :src="item.image" class="img" />
           <div class="item" v-if="item.name">
-            <div>{{item.name}}</div>
-            <div class="price">￥{{item.present_price}}</div>
+            <div @click="goDetail(item)">
+              <div>{{item.name}}</div>
+              <div class="price">￥{{item.present_price}}</div>
+            </div>
+
             <div class="close">
               <van-icon name="close" @click="close(index)" />
             </div>
           </div>
           <div class="item" v-else-if="item.goodsName">
-            <div>{{item.goodsName}}</div>
-            <div class="price">￥{{item.price}}</div>
+            <div @click="goDetail(item)">
+              <div>{{item.goodsName}}</div>
+              <div class="price">￥{{item.price}}</div>
+            </div>
             <div class="close">
               <van-icon name="close" @click="close(index)" />
             </div>
@@ -58,6 +63,20 @@ export default {
           localStorage.setItem("views", JSON.stringify(this.browsing));
         })
         .catch(() => {});
+    },
+    goDetail(item) {
+      if (item.goodsId) {
+        this.$router.push({
+          path: "/details",
+          query: { id: item.goodsId }
+        });
+      } else {
+        this.$router.push({
+          path: "/details",
+          query: { id: item.id }
+        });
+      }
+      this.$utils.goDetail(item);
     }
   },
   mounted() {

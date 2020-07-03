@@ -12,6 +12,7 @@
         default-tag-text="默认"
         @add="onAdd"
         @edit="onEdit"
+        @select="select"
       />
     </div>
   </div>
@@ -25,7 +26,8 @@ export default {
     return {
       list: [],
       chosenAddressId: "",
-      obj: {}
+      obj: {},
+      flag: true
     };
   },
   components: {},
@@ -41,6 +43,12 @@ export default {
     },
     onAdd() {
       this.$router.push("/addaddress");
+    },
+    select(item, index) {
+      this.$router.push({
+        path:'settlement',
+        query: { chosenAddress: item, flag: this.flag }
+      });
     }
   },
   mounted() {
